@@ -1,0 +1,4944 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2020 Josh Davidson (Octal450) -->
+<!-- Copyright (c) 2020 Matthew Maring (mattmaring) -->
+
+<PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
+	<sim>
+
+		<animation>
+			<fire-services type="bool">0</fire-services>
+		</animation>
+		
+		<author>Josh Davidson/Octal450 (Flight Dynamics, Systems, Displays), Jonathan Redpath/legoboyvdlp, merspieler, Matthew Maring/mattmaring (Systems, Displays), Thorsten Herrmann/TH-555, Semir Gebran/CaptB (3D, Textures)</author>
+		
+		<authors>
+			<author>
+				<name>Josh Davidson</name>
+				<description>Flight Dynamics, Systems, Displays</description>
+				<nick>Octal450</nick>
+			</author>
+			<author>
+				<name>Jonathan Redpath</name>
+				<description>Systems, Displays, FMGC</description>
+				<nick>legoboyvdlp</nick>
+			</author>
+			<author>
+				<name>merspieler</name>
+				<description>Systems, Displays</description>
+			</author>
+			<author>
+				<name>Matthew Maring</name>
+				<description>Fuel predictions, FMGC</description>
+				<nick>mattmaring</nick>
+			</author>
+			<author>
+				<name>Thorsten Herrmann</name>
+				<description>Cockpit 3D model</description>
+				<nick>TH-555</nick>
+			</author>
+			<author>
+				<name>Semir Gebran</name>
+				<description>3D model</description>
+				<nick>CaptB</nick>
+			</author>
+			<author>
+				<name>Andrea Vezzali</name>
+				<description>Systems, Displays</description>
+				<nick>vezza</nick>
+			</author>
+		</authors>
+		
+		<checklists include="A32X-Checklists.xml"/>
+		
+		<description>Airbus A320</description>
+		<long-description>The Airbus A320 is a family of narrow body airliners built by Airbus Industrie. First flown in 1987,
+		the aircraft is the most produced airliner ever, with over 9,500 built to date. It was one of the first airliners
+		to use digital flight controls and fly by wire, and a fully glass cockpit.</long-description>
+		
+		<expected-aircraft-dir-name>A320-family</expected-aircraft-dir-name>
+		
+		<hud n="0">
+			<enable3d n="0">false</enable3d>
+			<enable3d n="1">false</enable3d>
+		</hud>
+
+		<model>
+			<fallback-model-index>212</fallback-model-index>
+
+			<autopush include="AircraftConfig/autopush-config.xml"/>
+			<display-contrast type="double">0.7</display-contrast>
+			<icing>
+				<iceable>
+					<name>WingLeft</name>
+					<ice-inches>0.0</ice-inches>
+					<salvage-control>/systems/pneumatics/valves/wing-ice-1</salvage-control>
+					<sensitivity type="double">0.8</sensitivity>
+					<output-property>/fdm/jsbsim/ice/wingL</output-property>
+				</iceable>
+				<iceable>
+					<name>WingRight</name>
+					<ice-inches>0.0</ice-inches>
+					<salvage-control>/systems/pneumatics/valves/wing-ice-2</salvage-control>
+					<sensitivity type="double">0.8</sensitivity>
+					<output-property>/fdm/jsbsim/ice/wingR</output-property>
+				</iceable>
+				<iceable>
+					<name>LeftEngine</name>
+					<ice-inches>0.0</ice-inches>
+					<salvage-control>/systems/pneumatics/valves/engine-ice-1</salvage-control>
+					<sensitivity type="double">0.5</sensitivity>
+					<output-property>/fdm/jsbsim/ice/lengine</output-property>
+				</iceable>
+				<iceable>
+					<name>RightEngine</name>
+					<ice-inches>0.0</ice-inches>
+					<salvage-control>/systems/pneumatics/valves/engine-ice-2</salvage-control>
+					<sensitivity type="double">0.5</sensitivity>
+					<output-property>/fdm/jsbsim/ice/rengine</output-property>
+				</iceable>
+				<iceable>
+					<name>Windshield</name>
+					<ice-inches>0.0</ice-inches>
+					<salvage-control>/controls/ice-protection/windowprobeheat-output</salvage-control>
+					<sensitivity type="double">0.5</sensitivity>
+					<output-property>/environment/aircraft-effects/frost-inch</output-property>
+				</iceable>
+				<iceable>
+					<name>Fuselage</name>
+					<ice-inches>0.0</ice-inches>
+					<sensitivity type="double">0.3</sensitivity>
+					<!-- salvage control: de-icing truck -->
+					<salvage-control>services/deicing_truck/deicing/position-norm</salvage-control>
+					<output-property>/fdm/jsbsim/ice/fuselage</output-property>
+				</iceable>
+				<iceable>
+					<name>Pitot tube</name>
+					<ice-inches>0.0</ice-inches>
+					<sensitivity type="double">0.99</sensitivity>
+					<salvage-control>/controls/ice-protection/windowprobeheat-output</salvage-control>
+					<output-property>/systems/pitot[0]/icing</output-property>
+				</iceable>
+				<iceable>
+					<name>Pitot tube</name>
+					<ice-inches>0.0</ice-inches>
+					<sensitivity type="double">0.99</sensitivity>
+					<salvage-control>/controls/ice-protection/windowprobeheat-output</salvage-control>
+					<output-property>/systems/pitot[1]/icing</output-property>
+				</iceable>
+				<iceable>
+					<name>Pitot tube</name>
+					<ice-inches>0.0</ice-inches>
+					<sensitivity type="double">0.98</sensitivity>
+					<salvage-control>/controls/ice-protection/windowprobeheat-output</salvage-control>
+					<output-property>/systems/pitot[2]/icing</output-property>
+				</iceable>
+			</icing>
+			<lights>
+				<dome-light type="double">0</dome-light>
+				<nose-lights type="double">0</nose-lights>
+			</lights>
+		</model>
+		
+		<previews>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/cockpit.png</path>
+			</preview>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/cockpit2.png</path>
+			</preview>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/cockpit3.png</path>
+			</preview>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/wing1.png</path>
+			</preview>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/wing2.png</path>
+			</preview>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/wing3.png</path>
+			</preview>
+		</previews>
+		
+		<rating>
+			<FDM type="int">4</FDM>
+			<systems type="int">5</systems>
+			<cockpit type="int">5</cockpit>
+			<model type="int">4</model>
+		</rating>
+		
+		<status>Pre V1.0</status>
+		
+		<tags>
+			<tag>transport</tag>
+			<tag>airbus</tag>
+			<tag>1980s</tag>
+			<tag>1990s</tag>
+			<tag>2000s</tag>
+			<tag>2010s</tag>
+			<tag>ifr</tag>
+			<tag>retractable-gear</tag>
+			<tag>glass-cockpit</tag>
+			<tag>pressurised</tag>
+			<tag>jet</tag>
+			<tag>2-engine</tag>
+		</tags>
+		
+		<urls>
+			<home-page>http://wiki.flightgear.org/Airbus_A320_Family</home-page>
+			<support>https://forum.flightgear.org</support>
+			<wikipedia>https://en.wikipedia.org/wiki/Airbus_A320_family</wikipedia>
+			<code-repository>https://github.com/legoboyvdlp/A320-family</code-repository>
+		</urls>
+		
+		<systems n="0">
+			<electrical>
+				<path></path>
+			</electrical>
+			<!-- 0 is FADEC -->
+			<autopilot n="1">
+				<path>Aircraft/A320-family/Systems/fbw-pitch.xml</path>
+			</autopilot>
+			<autopilot n="2">
+				<path>Aircraft/A320-family/Systems/fmgc-drivers.xml</path>
+			</autopilot>
+			<autopilot n="3">
+				<path>Aircraft/A320-family/Systems/fmgc-roll-yaw.xml</path>
+			</autopilot>
+			<autopilot n="4">
+				<path>Aircraft/A320-family/Systems/fmgc-pitch.xml</path>
+			</autopilot>
+			<autopilot n="5">
+				<path>Aircraft/A320-family/Systems/fmgc-thrust.xml</path>
+			</autopilot>
+			<autopilot n="6">
+				<path>Aircraft/A320-family/Systems/libraries.xml</path>
+			</autopilot>
+			<autopilot n="7">
+				<path>Aircraft/A320-family/Systems/upper-ecam.xml</path>
+			</autopilot>
+			<autopilot n="8">
+				<path>Aircraft/A320-family/Systems/lower-ecam.xml</path>
+			</autopilot>
+			<autopilot n="9">
+				<path>Aircraft/A320-family/Systems/pfd.xml</path>
+			</autopilot>
+			<!-- 10 is sound -->
+			<property-rule n="101">
+				<path>Aircraft/A320-family/Systems/sound-common.xml</path>
+			</property-rule>
+			<property-rule n="110">
+				<path>Aircraft/A320-family/Systems/a320-lights-proprules.xml</path>
+			</property-rule>
+			<property-rule n="111">
+				<path>Aircraft/A320-family/Systems/ecam-proprules.xml</path>
+			</property-rule>
+			<path>Aircraft/A320-family/Systems/pitot-static.xml</path>
+		</systems>
+		
+		<sound>
+			<suppress-warning type="bool">1</suppress-warning>
+		</sound>
+	
+		<sounde>
+			<seatbelt-sign type="bool">0</seatbelt-sign>
+			<no-smoking-sign type="bool">0</no-smoking-sign>
+			<btn1 type="bool">0</btn1>
+			<btn3 type="bool">0</btn3>
+			<gear-vol type="double">0.40</gear-vol>
+			<knb1 type="bool">0</knb1>
+			<oh-btn type="bool">0</oh-btn>
+			<switch1 type="bool">0</switch1>
+			<flaps-click type="bool">0</flaps-click>
+			<pushbutton type="bool">0</pushbutton>
+			<spdbrk-click type="bool">0</spdbrk-click>
+			<relay-batt-1 type="bool">0</relay-batt-1>
+			<relay-batt-2 type="bool">0</relay-batt-2>
+			<relay-apu type="bool">0</relay-apu>
+			<relay-ext type="bool">0</relay-ext>
+		</sounde>
+
+		<instrumentation>
+			<path>Aircraft/A320-family/Systems/instrumentation.xml</path>
+		</instrumentation>
+
+		<alarms>
+			<master-caution type="bool">0</master-caution>
+		</alarms>
+
+		<menubar>
+			<default>
+				<menu n="9">
+					<item n="2">
+						<key>?</key>
+						<label>Aircraft Help</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							acconfig.help_dlg.open();
+							</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="100">
+					<label>|</label>
+					<enabled type="bool">false</enabled>
+				</menu>
+				<menu n="101">
+					<label>A320-family</label>
+					<item>
+						<label>Aircraft Config</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							acconfig.main_dlg.open();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>About This Aircraft</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							acconfig.about_dlg.open();
+							</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="102">
+					<label>FMGC</label>
+					<item>
+						<label>FCU Autoflight</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>autopilot</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Load Flightplan</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							acconfig.loadflightplan_dlg.open();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Simbrief</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+								acconfig.simbrief_dlg.open();
+							</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="103">
+					<label>DU</label>
+					<item>
+						<label>Captain's PFD</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_pfd.showPFD1();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>First Officer's PFD</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_pfd.showPFD2();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Captain's ND</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_nd.showNd();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>First Officer's ND</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_nd.showNd('right');
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Upper ECAM</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_ecam.showUpperECAM();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Lower ECAM</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_ecam.showLowerECAM();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>IESI</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_iesi.showIESI();
+							</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="104">
+					<label>Instruments</label>
+					<item>
+						<label>Left MCDU</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_mcdu.showMCDU1();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Right MCDU</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_mcdu.showMCDU2();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>RMP 1</label>
+						<binding>
+							<command>nasal</command>
+							<script><![CDATA[
+								Dialogs.rmp1Dialog.openDialog();
+							]]></script>
+						</binding>
+					</item>
+					<item>
+						<label>RMP 2</label>
+						<binding>
+							<command>nasal</command>
+							<script><![CDATA[
+								Dialogs.rmp2Dialog.openDialog();
+							]]></script>
+						</binding>
+					</item>
+					<item>
+						<label>RMP 3</label>
+						<binding>
+							<command>nasal</command>
+							<script><![CDATA[
+								Dialogs.rmp3Dialog.openDialog();
+							]]></script>
+						</binding>
+					</item>
+					<item>
+						<label>Remote MCDU</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							var mcduweb_dlg = gui.Dialog.new("sim/gui/dialogs/mcduweb/dialog", "Aircraft/A320-family/gui/dialogs/mcduweb.xml");
+							mcduweb_dlg.open();
+							</script>
+						</binding>
+					</item>					
+				</menu>
+				<menu n="105">
+					<label>Utilities</label>
+					<item>
+						<label>Select Livery</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							aircraft.livery.dialog.toggle();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Ground Services</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							acconfig.groundservices_dlg.open();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Announcements</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							var announce_dlg = gui.Dialog.new("sim/gui/dialogs/announce/dialog", "Aircraft/A320-family/AircraftConfig/announce.xml");
+							announce_dlg.open();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Refuel Panel</label>
+						<binding>
+							<command>nasal</command>
+							<script><![CDATA[
+								Dialogs.refuelDialog.openDialog();
+							]]></script>
+						</binding>
+					</item>
+					<item>
+						<label>Pushback</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>autopush</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Failures</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							acconfig.fail_dlg.open();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Canvas QRH</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+								canvas_qrh.createCanvasQRH();
+							</script>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+		
+		<!-- Multiplayer properties -->
+		<multiplay>
+			<generic>
+				<float n="0" alias="/controls/lighting/dome-norm"/>
+				<float n="1" alias="/gear/gear[0]/steering-norm"/>
+				<float n="2" alias="/engines/engine[0]/reverser-pos-norm"/>
+				<float n="3" alias="/engines/engine[1]/reverser-pos-norm"/>
+				<float n="4" alias="/fdm/jsbsim/hydraulics/elevator-l/final-deg"/>
+				<float n="5" alias="/fdm/jsbsim/hydraulics/elevator-r/final-deg"/>
+				<float n="6" alias="/fdm/jsbsim/hydraulics/aileron-l/final-deg"/>
+				<float n="7" alias="/fdm/jsbsim/hydraulics/aileron-r/final-deg"/>
+				<float n="8" alias="/fdm/jsbsim/hydraulics/rudder/final-deg"/>
+				<float n="9" alias="/fdm/jsbsim/hydraulics/elevator-trim/final-deg"/>
+				<float n="11" alias="/fdm/jsbsim/fcs/slat-pos-norm"/>
+				<int n="2" alias="/controls/lighting/landing-lights[0]"/>
+				<int n="3" alias="/controls/lighting/landing-lights[1]"/>
+				<int n="4" alias="/controls/lighting/landing-lights[2]"/>
+				<int n="5" alias="/sim/model/lights/nav-lights"/>
+				<int n="6" alias="/sim/model/lights/logo-lights"/>
+				<int n="7" alias="/sim/model/lights/strobe/state"/>
+				<int n="8" alias="/controls/lighting/wing-lights"/>
+				<int n="9" alias="/sim/model/lights/beacon/state"/>
+				<int n="10" alias="/engines/engine[0]/contrail"/>
+				<int n="11" alias="/engines/engine[1]/contrail"/>
+				<int n="12" alias="/sharklet"/>
+			</generic>
+		</multiplay>
+		
+		<flight-recorder include="Systems/flight-recorder.xml"/>
+		
+		<gui n="0" include="gui/it-gui.xml"/>
+		
+		<current-view>
+			<z-offset-default type="float">60.0</z-offset-default>
+			<z-offset-min-m type="float">10.0</z-offset-min-m>
+			<z-offset-max-m type="float">300.0</z-offset-max-m>
+		</current-view>
+		
+		<minimum-fg-version>2020.3.12</minimum-fg-version>
+
+		<navdb>
+			<min-runway-length-ft>3000</min-runway-length-ft>
+		</navdb>
+
+	</sim>
+	
+	<aircraft>
+		<icao>
+			<wake-turbulence-category>M</wake-turbulence-category>
+			<type type="string">A320</type>
+			<equipment type="string">SDE2FGHIRWXY</equipment>
+			<surveillance type="string">S</surveillance>
+		</icao>
+		<performance>
+			<!-- explicitly force the category to be 'E' instead of using tag heuristics
+			Although the A320 is a category 'C' aircraft, category 'E's profile fits better -->
+			<icao-category type="string">E</icao-category>
+			<minimum>
+				<takeoff-length-ft type="int">4500</takeoff-length-ft>
+				<landing-length-ft type="int">4500</landing-length-ft>
+			</minimum>
+			<maximum>
+				<altitude-ft type="int">41000</altitude-ft>
+				<mach type="double">0.82</mach>
+				<airspeed-knots type="int">350</airspeed-knots>
+			</maximum>
+		</performance>
+	</aircraft>
+
+	<consumables>
+		<fuel>
+			<tank n="0">
+				<name>Outer Left Wing</name>
+			</tank>
+			<tank n="1">
+				<name>Inner Left Wing</name>
+			</tank>
+			<tank n="2">
+				<name>Center</name>
+			</tank>
+			<tank n="3">
+				<name>Inner Right Wing</name>
+			</tank>
+			<tank n="4">
+				<name>Outer Right Wing</name>
+			</tank>
+			<tank n="5">
+				<name>Engine 1 Pipes</name>
+			</tank>
+			<tank n="6">
+				<name>Engine 2 Pipes</name>
+			</tank>
+			<tank n="7">
+				<name>APU Pipes</name>
+			</tank>
+		</fuel>
+	</consumables>
+	
+	<ECAM>
+		<Upper>
+			<FlapX type="double">0</FlapX>
+			<FlapY type="double">0</FlapY>
+			<SlatX type="double">0</SlatX>
+			<SlatY type="double">0</SlatY>
+			<FlapXtrans type="double">0</FlapXtrans>
+			<FlapYtrans type="double">0</FlapYtrans>
+			<SlatXtrans type="double">0</SlatXtrans>
+			<SlatYtrans type="double">0</SlatYtrans>
+		</Upper>
+		<msg>
+			<line1 type="string"></line1>
+			<line2 type="string"></line2>
+			<line3 type="string"></line3>
+			<line4 type="string"></line4>
+			<line5 type="string"></line5>
+			<line6 type="string"></line6>
+			<line7 type="string"></line7>
+			<line8 type="string"></line8>
+		</msg>
+		<rightmsg>
+			<line1 type="string"></line1>
+			<line2 type="string"></line2>
+			<line3 type="string"></line3>
+			<line4 type="string"></line4>
+			<line5 type="string"></line5>
+			<line6 type="string"></line6>
+			<line7 type="string"></line7>
+			<line8 type="string"></line8>
+		</rightmsg>
+		<warning-phase type="int">0</warning-phase>
+		<phases>
+			<timer>
+				<ldg-inhibit type="int">0</ldg-inhibit>
+				<ldg-inhibit-output type="double">0</ldg-inhibit-output>
+				<to-inhibit type="int">0</to-inhibit>
+				<to-inhibit-output type="double">0</to-inhibit-output>
+			</timer>
+		</phases>
+	</ECAM>
+	
+	<environment>
+		<aircraft-effects>
+			<frost-inch type="double">0</frost-inch>
+		</aircraft-effects>
+	</environment>	
+	
+	<fdm>
+		<jsbsim>
+			<external_reactions>
+				<tractor>
+					<magnitude alias="/sim/model/autopush/force-lbf"/>
+					<x alias="/sim/model/autopush/force-x"/>
+					<y alias="/sim/model/autopush/force-y"/>
+				</tractor>
+			</external_reactions>
+			<fbw>
+				<yaw>
+					<max-deg-switch type="double">25</max-deg-switch>
+				</yaw>
+			</fbw>
+			<zero type="int">0</zero>
+		</jsbsim>
+	</fdm>
+	
+	<payload>
+		<weight n="0">
+			<name>Cockpit Crew</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+			<min-lb type="double">200</min-lb>
+			<max-lb type="double">776</max-lb>
+		</weight>
+		<weight n="1">
+			<name>Forward Cabin</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">11640</max-lb>
+		</weight>
+		<weight n="2">
+			<name>Center Cabin</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">11640</max-lb>
+		</weight>
+		<weight n="3">
+			<name>Aft Cabin</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">11640</max-lb>
+		</weight>
+		<weight n="4">
+			<name>Forward Cargo</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">7500</max-lb>
+		</weight>
+		<weight n="5">
+			<name>Aft Cargo</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">10000</max-lb>
+		</weight>
+		<weight n="6">
+			<name>Aft Bulk Cargo</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">3300</max-lb>
+		</weight>
+	</payload>
+	
+	<it-autoflight>
+		<config>
+			<altitude-dial-mode>0</altitude-dial-mode>
+		</config>
+		<output>
+			<ap1>0</ap1>
+			<ap2>0</ap2>
+			<lat>0</lat>
+			<vert>0</vert>
+		</output>
+		<custom>
+			<show-hdg>0</show-hdg>
+			<trk-fpa>0</trk-fpa>
+			<hdg-knb>0</hdg-knb>
+			<spd-knb>0</spd-knb>
+			<alt-knb>0</alt-knb>
+			<vs-knb>0</vs-knb>
+		</custom>
+	</it-autoflight>
+
+	<it-fbw n="0">
+		<alpha-hld type="bool">0</alpha-hld>
+		<degrade-law type="int">0</degrade-law>
+		<law type="int">0</law>
+		<degrade-yaw-law type="int">0</degrade-yaw-law>
+		<yaw-law type="int">0</yaw-law>
+		<roll-lim type="string">33</roll-lim>
+		<roll-back type="bool">0</roll-back>
+		<override type="bool">0</override>
+		<protections n="0">
+			<overspeed type="bool">0</overspeed>
+			<overspeed-roll-back type="bool">0</overspeed-roll-back>
+		</protections>
+		<spd-hld type="bool">0</spd-hld>
+	</it-fbw>
+	
+	<FMGC n="0">
+		<active-fmgc-channel type="int">0</active-fmgc-channel>
+		<internal>
+			<cost-index type="int">0</cost-index>
+			<to-state type="bool">0</to-state>
+		</internal>
+		<simbrief-username type="string"></simbrief-username>
+	</FMGC>
+	
+	<controls>
+		<footrest-cpt n="0" type="double">0</footrest-cpt>
+		<footrest-cpt n="1" type="double">0</footrest-cpt>
+		<footrest-fo n="0" type="double">0</footrest-fo>
+		<footrest-fo n="1" type="double">0</footrest-fo>
+		<atc>
+			<system-knob type="int">0</system-knob>
+			<mode-knob type="int">0</mode-knob>
+			<abv-blw type="int">0</abv-blw>
+			<thrt-all type="int">0</thrt-all>
+		</atc>
+		<apu>
+			<agent-btn type="bool">0</agent-btn>
+			<fire-btn type="bool">0</fire-btn>
+			<fire-btn-cover type="bool">0</fire-btn-cover>
+			<fire-light type="bool">0</fire-light>
+			<master type="bool">0</master>
+			<start type="bool">0</start>
+			<bleed type="bool">0</bleed>
+		</apu>
+		<autobrake>
+			<active type="bool">0</active>
+			<brake-left type="double">0</brake-left>
+			<brake-right type="double">0</brake-right>
+		</autobrake>
+		<cabin>
+			<footwarmer-cpt type="bool">0</footwarmer-cpt>
+			<footwarmer-fo type="bool">0</footwarmer-fo>
+		</cabin>
+		<CVR>
+			<erase type="bool">0</erase>
+			<gndctl type="bool">0</gndctl>
+			<power type="bool">0</power>
+			<test type="bool">0</test>
+			<tone type="bool">0</tone>
+		</CVR>
+		<doors>
+			<doorc-switch type="int">0</doorc-switch>
+		</doors>
+		<electric>
+			<avionics-switch type="bool">true</avionics-switch>
+		</electric>
+		<electrical>
+			<ground-cart type="bool">0</ground-cart>
+			<switches n="0">
+				<apu type="bool">1</apu>
+				<ac-ess-feed type="bool">1</ac-ess-feed>
+				<bat-1 type="bool">0</bat-1>
+				<bat-2 type="bool">0</bat-2>
+				<bus-tie type="bool">1</bus-tie>
+				<emer-gen-test type="bool">0</emer-gen-test>
+				<ext-pwr type="bool">0</ext-pwr>
+				<galley type="bool">1</galley>
+				<gen-1 type="bool">1</gen-1>
+				<gen-2 type="bool">1</gen-2>
+				<gen-1-line-contactor type="bool">0</gen-1-line-contactor>
+				<idg-1-disc type="bool">1</idg-1-disc>
+				<idg-2-disc type="bool">1</idg-2-disc>
+				<idg-1-disc-momentary type="bool">0</idg-1-disc-momentary>
+				<idg-2-disc-momentary type="bool">0</idg-2-disc-momentary>
+				<emer-elec-man-on type="bool">0</emer-elec-man-on>
+			</switches>
+		</electrical>
+		<engines>
+			<engine-start-switch type="int">1</engine-start-switch>
+			<epr-limit type="double">0.0</epr-limit>
+			<n1-limit type="double">0.0</n1-limit>
+			<thrust-limit type="string">TOGA</thrust-limit>
+			<engine n="0">
+				<cutoff type="bool">true</cutoff>
+				<cutoff-switch type="bool">true</cutoff-switch>
+				<fire-btn type="bool">0</fire-btn>
+				<fire-btn-cover type="bool">0</fire-btn-cover>
+				<fire-light type="bool">0</fire-light>
+				<man-start type="bool">0</man-start>
+				<starter type="bool">0</starter>
+				<starter-switch type="bool">0</starter-switch>
+				<max-athr-thrust type="double">0.94</max-athr-thrust>
+				<throttle-output type="double">0</throttle-output>
+				<throttle-fdm type="double">0</throttle-fdm>
+				<throttle-rev type="double">0</throttle-rev>
+				<reverser type="double">0</reverser>
+				<igniter-a type="bool">0</igniter-a>
+				<igniter-b type="bool">0</igniter-b>
+				<last-igniter type="string">B</last-igniter>
+			</engine>
+			<engine n="1">
+				<cutoff type="bool">true</cutoff>
+				<cutoff-switch type="bool">true</cutoff-switch>
+				<fire-btn type="bool">0</fire-btn>
+				<fire-btn-cover type="bool">0</fire-btn-cover>
+				<fire-light type="bool">0</fire-light>
+				<man-start type="bool">0</man-start>
+				<starter type="bool">0</starter>
+				<starter-switch type="bool">0</starter-switch>
+				<max-athr-thrust type="double">0.94</max-athr-thrust>
+				<throttle-output type="double">0</throttle-output>
+				<throttle-fdm type="double">0</throttle-fdm>
+				<throttle-rev type="double">0</throttle-rev>
+				<reverser type="double">0</reverser>
+				<igniter-a type="bool">0</igniter-a>
+				<igniter-b type="bool">0</igniter-b>
+				<last-igniter type="string">B</last-igniter>
+			</engine>
+			<engine n="2">
+				<cutoff type="bool">true</cutoff>
+				<starter type="bool">0</starter>
+				<throttle-output type="double">0</throttle-output>
+				<throttle-fdm type="double">0</throttle-fdm>
+			</engine>
+		</engines>
+		<fctl>
+			<switches>
+				<elac1 type="bool">0</elac1>
+				<elac2 type="bool">0</elac2>
+				<sec1 type="bool">0</sec1>
+				<sec2 type="bool">0</sec2>
+				<sec3 type="bool">0</sec3>
+				<fac1 type="bool">0</fac1>
+				<fac2 type="bool">0</fac2>
+			</switches>
+		</fctl>
+		<fire>
+			<apu-test-btn type="bool">0</apu-test-btn>
+			<test-btn-1 type="bool">0</test-btn-1>
+			<test-btn-2 type="bool">0</test-btn-2>
+		</fire>
+		<flight>
+			<aileron-drives-tiller type="bool">0</aileron-drives-tiller>
+			<aileron-input type="double">0</aileron-input>
+			<elevator-input type="double">0</elevator-input>
+			<speedbrake-arm type="bool">0</speedbrake-arm>
+			<slats type="double">0</slats>
+		</flight>
+		<fuel>
+			<switches>
+				<center-mode type="bool">1</center-mode>
+				<crossfeed type="bool">0</crossfeed>
+				<pump-left-1 type="bool">0</pump-left-1>
+				<pump-left-2 type="bool">0</pump-left-2>
+				<pump-center-1 type="bool">0</pump-center-1>
+				<pump-center-2 type="bool">0</pump-center-2>
+				<pump-right-1 type="bool">0</pump-right-1>
+				<pump-right-2 type="bool">0</pump-right-2>
+			</switches>
+			<refuel>
+				<valve-l-guard type="bool">0</valve-l-guard>
+				<valve-c-guard type="bool">0</valve-c-guard>
+				<valve-r-guard type="bool">0</valve-r-guard>
+				<mode-guard type="bool">0</mode-guard>
+				<valve-l type="double">0.5</valve-l>
+				<valve-c type="double">0.5</valve-c>
+				<valve-r type="double">0.5</valve-r>
+				<mode type="double">0.5</mode>
+				<power type="bool">0</power>
+				<test type="double">0.5</test>
+				<amount type="double">12.0</amount>
+			</refuel>
+		</fuel>
+		<gear>
+			<brake-fans type="bool">0</brake-fans>
+			<brake-parking type="bool">1</brake-parking>
+			<tiller-cmd-norm type="double">0</tiller-cmd-norm>
+			<tiller-enabled type="bool">0</tiller-enabled>
+			<nws-switch type="double">1</nws-switch>
+		</gear>
+		<hydraulic>
+			<switches>
+				<blue-elec type="bool">0</blue-elec>
+				<blue-elec-ovrd type="bool">0</blue-elec-ovrd>
+				<green-edp type="bool">0</green-edp>
+				<ptu type="bool">0</ptu>
+				<rat-man type="bool">0</rat-man>
+				<yellow-edp type="bool">0</yellow-edp>
+				<yellow-elec type="bool">0</yellow-elec>
+			</switches>
+		</hydraulic>
+		<ice-protection>
+			<leng type="bool">0</leng>
+			<reng type="bool">0</reng>
+			<wing type="bool">0</wing>
+			<lengfault type="bool">0</lengfault>
+			<rengfault type="bool">0</rengfault>
+			<wingfault type="bool">0</wingfault>
+			<windowprobeheat type="bool">0</windowprobeheat>
+			<windowprobeheat-output type="bool">0</windowprobeheat-output>
+		</ice-protection>
+		<lighting>
+			<DU>
+				<du1 type="double">1</du1>
+				<du2 type="double">1</du2>
+				<du3 type="double">1</du3>
+				<du4 type="double">1</du4>
+				<du5 type="double">1</du5>
+				<du6 type="double">1</du6>
+				<iesi type="double">1</iesi>
+				<mcdu1 type="double">1</mcdu1>
+				<mcdu2 type="double">1</mcdu2>
+			</DU>
+			<beacon type="bool">0</beacon>
+			<interior type="double">0</interior>
+			<cockpit type="bool">0</cockpit>
+			<cones type="bool">true</cones>
+			<dome-norm type="double">0</dome-norm>
+			<fcu-panel-knb type="double">0</fcu-panel-knb>
+			<fcu-panel-norm type="double">0</fcu-panel-norm>
+			<fcu-digit-knb type="double">1</fcu-digit-knb>
+			<fcu-digit-norm type="double">1</fcu-digit-norm>
+			<landing-lights n="0" type="double">0</landing-lights>
+			<landing-lights n="1" type="double">0</landing-lights>
+			<landing-lights n="2" type="double">0</landing-lights>
+			<ped-flood-knb type="double">0</ped-flood-knb>
+			<ped-flood-norm type="double">0</ped-flood-norm>
+			<main-flood-knb type="double">0</main-flood-knb>
+			<main-flood-norm type="double">0</main-flood-norm>
+			<main-panel-knb type="double">0</main-panel-knb>
+			<main-panel-norm type="double">0</main-panel-norm>
+			<nav-lights-switch type="int">0</nav-lights-switch>
+			<overhead-panel-knb type="double">0</overhead-panel-knb>
+			<overhead-panel-norm type="double">0</overhead-panel-norm>
+			<main-panel-pedestal-norm type="double">0</main-panel-pedestal-norm>
+			<strobe type="bool">0</strobe>
+			<no-smoking-sign type="bool">1</no-smoking-sign>
+			<seatbelt-sign type="bool">0</seatbelt-sign>
+			<taxi-light-switch type="float">0</taxi-light-switch>
+			<turnoff-light-switch type="bool">0</turnoff-light-switch>
+			<leftturnoff type="bool">0</leftturnoff>
+			<rightturnoff type="bool">0</rightturnoff>
+		</lighting>
+		<navigation>
+			<adirscp>
+				<switches>
+					<adr-1 type="bool">1</adr-1>
+					<adr-2 type="bool">1</adr-2>
+					<adr-3 type="bool">1</adr-3>
+					<ir-1 type="bool">0</ir-1>
+					<ir-2 type="bool">0</ir-2>
+					<ir-3 type="bool">0</ir-3>
+					<ir-1-mode type="int">0</ir-1-mode>
+					<ir-2-mode type="int">0</ir-2-mode>
+					<ir-3-mode type="int">0</ir-3-mode>
+				</switches>
+				<lights>
+					<adr-1-fault type="bool">0</adr-1-fault>
+					<adr-2-fault type="bool">0</adr-2-fault>
+					<adr-3-fault type="bool">0</adr-3-fault>
+					<adr-1-off type="bool">0</adr-1-off>
+					<adr-2-off type="bool">0</adr-2-off>
+					<adr-3-off type="bool">0</adr-3-off>
+					<ir-1-fault type="bool">0</ir-1-fault>
+					<ir-2-fault type="bool">0</ir-2-fault>
+					<ir-3-fault type="bool">0</ir-3-fault>
+					<ir-1-off type="bool">0</ir-1-off>
+					<ir-2-off type="bool">0</ir-2-off>
+					<ir-3-off type="bool">0</ir-3-off>
+					<on-bat type="bool">0</on-bat>
+				</lights>
+			</adirscp>
+			<switching>
+				<att-hdg type="int">0</att-hdg>
+				<air-data type="int">0</air-data>
+			</switching>
+		</navigation>
+		<OH>
+			<protectors>
+				<ditching type="bool">0</ditching>
+				<elecratman type="bool">0</elecratman>
+				<eng1-manstart type="bool">0</eng1-manstart>
+				<eng2-manstart type="bool">0</eng2-manstart>
+				<eng1-n1 type="bool">0</eng1-n1>
+				<eng2-n1 type="bool">0</eng2-n1>
+				<idg1 type="bool">0</idg1>
+				<idg2 type="bool">0</idg2>
+				<maskman type="bool">0</maskman>
+				<ramair type="bool">0</ramair>
+				<ratman type="bool">0</ratman>
+			</protectors>
+		</OH>
+		<oxygen>
+			<cockpit-oxygen-supply-pb type="bool">0</cockpit-oxygen-supply-pb>
+			<cockpit-mask-1-on type="bool">0</cockpit-mask-1-on>
+			<cockpit-mask-2-on type="bool">0</cockpit-mask-2-on>
+			<cockpit-mask-3-on type="bool">0</cockpit-mask-3-on>
+			<cockpit-mask-4-on type="bool">0</cockpit-mask-4-on>
+			<cockpit-mask-1-selector type="bool">0</cockpit-mask-1-selector>
+			<cockpit-mask-2-selector type="bool">0</cockpit-mask-2-selector>
+			<cockpit-mask-3-selector type="bool">0</cockpit-mask-3-selector>
+			<cockpit-mask-4-selector type="bool">0</cockpit-mask-4-selector>
+			<passenger-mask-deploy-man type="bool">0</passenger-mask-deploy-man>
+			<passenger-mask-reset type="bool">0</passenger-mask-reset>
+		</oxygen>
+		<pneumatics n="0">
+			<switches n="0">
+				<apu type="bool">0</apu>
+				<bleed-1 type="bool">1</bleed-1>
+				<bleed-2 type="bool">1</bleed-2>
+				<blower type="bool">0</blower>
+				<cabin-fans type="bool">1</cabin-fans>
+				<extract type="bool">0</extract>
+				<groundair type="bool">0</groundair>
+				<hot-air type="bool">1</hot-air>
+				<pack-1 type="bool">0</pack-1>
+				<pack-2 type="bool">0</pack-2>
+				<pack-flow type="double">1.0</pack-flow>
+				<ram-air type="bool">0</ram-air>
+				<temp-cabin-aft type="double">0.5</temp-cabin-aft>
+				<temp-cabin-fwd type="double">0.5</temp-cabin-fwd>
+				<temp-cockpit type="double">0.5</temp-cockpit>
+				<x-bleed type="int">1</x-bleed> <!-- auto -->
+			</switches>
+		</pneumatics>
+		<switches>
+			<annun-test type="int">0</annun-test>
+			<beacon type="bool">0</beacon>
+			<cabinCall type="bool">0</cabinCall>
+			<emerCall type="bool">0</emerCall>
+			<emerCallLtO type="bool">0</emerCallLtO>
+			<emerCallLtC type="bool">0</emerCallLtC>
+			<landing-lights-l type="float">0.0</landing-lights-l>
+			<landing-lights-r type="float">0.0</landing-lights-r>
+			<LrainRpt type="bool">0</LrainRpt>
+			<mechCall type="bool">0</mechCall>
+			<no-smoking-sign type="double">0.5</no-smoking-sign>
+			<qnh-knb>100000</qnh-knb>
+			<RrainRpt type="bool">0</RrainRpt>
+			<rudder-trim type="int">0</rudder-trim>
+			<seatbelt-sign type="double">0.0</seatbelt-sign>
+			<strobe type="double">0.0</strobe>
+			<wing-lights type="bool">0</wing-lights>
+			<wiperLspd type="int">0</wiperLspd>
+			<wiperRspd type="int">0</wiperRspd>
+		</switches>
+		<tray n="0">
+			<lefttrayext type="double">0</lefttrayext>
+			<righttrayext type="double">0</righttrayext>
+		</tray>
+	</controls>
+	
+	<engines>
+		<ready type="bool">0</ready>
+		<engine n="0">
+			<egt-actual type="double">0</egt-actual>
+			<epr-actual type="double">1</epr-actual>
+			<n1-actual type="double">0</n1-actual>
+			<n2-actual type="double">0</n2-actual>
+			<on-fire type="bool">0</on-fire>
+			<reverser-pos-norm type="double">0</reverser-pos-norm>
+			<running type="bool">0</running>
+			<state type="int">0</state>
+		</engine>
+		<engine n="1">
+			<egt-actual type="double">0</egt-actual>
+			<epr-actual type="double">1</epr-actual>
+			<n1-actual type="double">0</n1-actual>
+			<n2-actual type="double">0</n2-actual>
+			<on-fire type="bool">0</on-fire>
+			<reverser-pos-norm type="double">0</reverser-pos-norm>
+			<running type="bool">0</running>
+			<state type="int">0</state>
+		</engine>
+		<engine n="2">
+			<egt-actual type="double">0</egt-actual>
+			<n1 type="double">0</n1>
+			<n-actual type="double">0</n-actual>
+			<running type="bool">0</running>
+			<serviceable type="bool">1</serviceable>
+		</engine>
+	</engines>
+
+	<gear>
+		<gear n="0">
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
+		</gear>
+		<gear n="1">
+			<Lbrake-smoke type="double">0</Lbrake-smoke>
+			<L1brake-temp-degc type="double">15</L1brake-temp-degc>
+			<L2brake-temp-degc type="double">15</L2brake-temp-degc>
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
+		</gear>
+		<gear n="2">
+			<Rbrake-smoke type="double">0</Rbrake-smoke>
+			<R3brake-temp-degc type="double">15</R3brake-temp-degc>
+			<R4brake-temp-degc type="double">15</R4brake-temp-degc>
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
+		</gear>
+	</gear>
+	
+	<services n="0">
+		<chocks n="0">
+			<enable type="bool">0</enable>
+		</chocks>
+		<fuel-truck>
+			<connect type="bool">0</connect>
+			<enable type="bool">0</enable>
+			<operate type="bool">0</operate>
+			<request-lbs type="double">0</request-lbs>
+			<request-total-lbs type="double">0</request-total-lbs>
+		</fuel-truck>
+	</services>
+	
+	<systems>
+		<acconfig n="0">
+			<autoconfig-running type="bool">0</autoconfig-running>
+			<options n="0">
+				<seperate-tiller-axis type="bool">0</seperate-tiller-axis>
+			</options>
+		</acconfig>
+		<air-conditioning>
+			<packs>
+				<pack-1-output-temp type="double">0</pack-1-output-temp>
+				<pack-2-output-temp type="double">0</pack-2-output-temp>
+				<pack-1-outlet-temp type="double">0</pack-1-outlet-temp>
+				<pack-2-outlet-temp type="double">0</pack-2-outlet-temp>
+				<pack-flow-1 type="double">0</pack-flow-1>
+				<pack-flow-2 type="double">0</pack-flow-2>
+			</packs>
+			<temperatures>
+				<cabin-overall-temp-kelvin type="double">297</cabin-overall-temp-kelvin>
+				<cockpit-duct type="double">0</cockpit-duct>
+				<cabin-aft-duct type="double">0</cabin-aft-duct>
+				<cabin-fwd-duct type="double">0</cabin-fwd-duct>
+				<cockpit-temp type="double">0</cockpit-temp>
+				<cabin-aft-temp type="double">0</cabin-aft-temp>
+				<cabin-fwd-temp type="double">0</cabin-fwd-temp>
+			</temperatures>
+			<valves>
+				<flow-control-valve-1 type="double">0</flow-control-valve-1>
+				<flow-control-valve-2 type="double">0</flow-control-valve-2>
+				<ram-air type="double">0</ram-air>
+			</valves>
+			<warnings>
+				<pack-1-disagree type="bool">0</pack-1-disagree>
+				<pack-2-disagree type="bool">0</pack-2-disagree>
+				<pack-1-fault-light type="bool">0</pack-1-fault-light>
+				<pack-2-fault-light type="bool">0</pack-2-fault-light>
+				<pack-1-ovht type="bool">0</pack-1-ovht>
+				<pack-2-ovht type="bool">0</pack-2-ovht>
+			</warnings>
+		</air-conditioning>
+		<atc>
+			<transponder-code type="string">2000</transponder-code>
+			<failed type="bool">0</failed>
+		</atc>
+		<atsu>
+			<atis-server type="string">faa</atis-server>
+			<wxr-server type="string">faa</wxr-server>
+		</atsu>
+		<apu>
+			<oil>
+				<level-l type="double">5.4</level-l>
+				<allow-oil-consumption type="bool">1</allow-oil-consumption>
+				<oil-pressure-psi type="double">0</oil-pressure-psi>
+				<oil-temperature-degC type="double">0</oil-temperature-degC>
+			</oil>
+			<bleed-load-kw type="double">252</bleed-load-kw>
+			<electrical-load-kw type="double">132</electrical-load-kw>
+			<available type="bool">0</available>
+			<fault type="bool">0</fault>
+			<dc-bat-three-minutes type="bool">0</dc-bat-three-minutes>
+			<start type="bool">0</start>
+		</apu>
+		<comm>
+			<hf>
+				<reception-1 type="bool">1</reception-1>
+				<reception-2 type="bool">1</reception-2>
+				<tone1000hz-1 type="bool">0</tone1000hz-1>
+				<tone1000hz-2 type="bool">0</tone1000hz-2>
+			</hf>
+		</comm>
+		<electrical n="0">
+			<bus>
+				<ac-ess type="double">0</ac-ess>
+				<dc-1 type="double">0</dc-1>
+				<dc-2 type="double">0</dc-2>
+			</bus>
+			<relay>
+				<ess-tr-contactor>
+					<contact-pos type="int">0</contact-pos>
+				</ess-tr-contactor>
+			</relay>
+			<some-electric-thingie>
+				<emer-elec-config type="bool">0</emer-elec-config>
+				<emer-gen-operate type="bool">0</emer-gen-operate>
+			</some-electric-thingie>
+			<sources>
+				<bat-1>
+					<amps type="double">0</amps>
+					<percent-calc type="double">80</percent-calc>
+				</bat-1>
+				<bat-2>
+					<amps type="double">0</amps>
+					<percent-calc type="double">80</percent-calc>
+				</bat-2>
+			</sources>
+		</electrical>
+		
+		<fadec>
+			<n1mode1 type="bool">0</n1mode1>
+			<n1mode2 type="bool">0</n1mode2>
+		</fadec>
+		
+		<failures n="0">
+			<aileron-left type="bool">0</aileron-left>
+			<aileron-right type="bool">0</aileron-right>
+			<elevator-left type="bool">0</elevator-left>
+			<elevator-right type="bool">0</elevator-right>
+			<electrical>
+				<apu type="bool">0</apu>
+				<ac-ess-bus type="bool">0</ac-ess-bus>
+				<ac-1-bus type="bool">0</ac-1-bus>
+				<ac-2-bus type="bool">0</ac-2-bus>
+				<dc-bat-bus type="bool">0</dc-bat-bus>
+				<dc-ess-bus type="bool">0</dc-ess-bus>
+				<dc-1-bus type="bool">0</dc-1-bus>
+				<dc-2-bus type="bool">0</dc-2-bus>
+				<emer-gen type="bool">0</emer-gen>
+				<ess-tr type="bool">0</ess-tr>
+				<gen-1 type="bool">0</gen-1>
+				<gen-2 type="bool">0</gen-2>
+				<idg-1 type="bool">0</idg-1>
+				<idg-2 type="bool">0</idg-2>
+				<stat-inv type="bool">0</stat-inv>
+				<tr-1 type="bool">0</tr-1>
+				<tr-2 type="bool">0</tr-2>
+			</electrical>
+			<fctl>
+				<elac1 type="bool">0</elac1>
+				<elac2 type="bool">0</elac2>
+				<sec1 type="bool">0</sec1>
+				<sec2 type="bool">0</sec2>
+				<sec3 type="bool">0</sec3>
+				<fac1 type="bool">0</fac1>
+				<fac2 type="bool">0</fac2>
+				<rtlu-1 type="bool">0</rtlu-1>
+				<rtlu-2 type="bool">0</rtlu-2>
+				<ths-jam type="bool">0</ths-jam>
+				<yaw-damper-1 type="bool">0</yaw-damper-1>
+				<yaw-damper-2 type="bool">0</yaw-damper-2>
+			</fctl>
+			<fuel>
+				<left-tank-pump-1 type="bool">0</left-tank-pump-1>
+				<left-tank-pump-2 type="bool">0</left-tank-pump-2>
+				<center-tank-pump-1 type="bool">0</center-tank-pump-1>
+				<center-tank-pump-2 type="bool">0</center-tank-pump-2>
+				<right-tank-pump-1 type="bool">0</right-tank-pump-1>
+				<right-tank-pump-2 type="bool">0</right-tank-pump-2>
+			</fuel>
+			<gear type="bool">0</gear>
+			<hydraulic>
+				<blue-elec type="bool">0</blue-elec>
+				<blue-elec-ovht type="bool">0</blue-elec-ovht>
+				<blue-leak type="bool">0</blue-leak>
+				<blue-reservoir-air-press-lo type="bool">0</blue-reservoir-air-press-lo> <!-- true at 22 psi relative, false at 25 psi relative -->
+				<blue-reservoir-ovht type="bool">0</blue-reservoir-ovht> <!-- 95 deg, cancel at 88.4 deg -->
+				<green-edp type="bool">0</green-edp>
+				<green-leak type="bool">0</green-leak>
+				<green-reservoir-air-press-lo type="bool">0</green-reservoir-air-press-lo>
+				<green-reservoir-ovht type="bool">0</green-reservoir-ovht>
+				<ptu type="bool">0</ptu>
+				<yellow-edp type="bool">0</yellow-edp>
+				<yellow-elec type="bool">0</yellow-elec>
+				<yellow-elec-ovht type="bool">0</yellow-elec-ovht> <!-- 162 deg -->
+				<yellow-leak type="bool">0</yellow-leak>
+				<yellow-reservoir-air-press-lo type="bool">0</yellow-reservoir-air-press-lo>
+				<yellow-reservoir-ovht type="bool">0</yellow-reservoir-ovht>
+			</hydraulic>
+			<icing>
+				<wing-left-valve type="bool">0</wing-left-valve>
+				<wing-right-valve type="bool">0</wing-right-valve>
+				<engine-left-valve type="bool">0</engine-left-valve>
+				<engine-right-valve type="bool">0</engine-right-valve>
+			</icing>
+			<pneumatics>
+				<apu-valve type="bool">0</apu-valve>
+				<bleed-1-valve type="bool">0</bleed-1-valve>
+				<bleed-2-valve type="bool">0</bleed-2-valve>
+				<bmc-1 type="bool">0</bmc-1>
+				<bmc-2 type="bool">0</bmc-2>
+				<cabin-fans type="bool">0</cabin-fans>
+				<hot-air-valve type="bool">0</hot-air-valve>
+				<hp-1-valve type="bool">0</hp-1-valve>
+				<hp-2-valve type="bool">0</hp-2-valve>
+				<pack-1-valve type="bool">0</pack-1-valve>
+				<pack-2-valve type="bool">0</pack-2-valve>
+				<ram-air-valve type="bool">0</ram-air-valve>
+				<trim-valve-cockpit type="bool">0</trim-valve-cockpit>
+				<trim-valve-cabin-aft type="bool">0</trim-valve-cabin-aft>
+				<trim-valve-cabin-fwd type="bool">0</trim-valve-cabin-fwd>
+				<x-bleed-valve type="bool">0</x-bleed-valve>
+			</pneumatics>
+			<spoilers>
+				<spoiler-l1 type="bool">0</spoiler-l1>
+				<spoiler-l2 type="bool">0</spoiler-l2>
+				<spoiler-l3 type="bool">0</spoiler-l3>
+				<spoiler-l4 type="bool">0</spoiler-l4>
+				<spoiler-l5 type="bool">0</spoiler-l5>
+				<spoiler-r1 type="bool">0</spoiler-r1>
+				<spoiler-r2 type="bool">0</spoiler-r2>
+				<spoiler-r3 type="bool">0</spoiler-r3>
+				<spoiler-r4 type="bool">0</spoiler-r4>
+				<spoiler-r5 type="bool">0</spoiler-r5>
+			</spoilers>
+			<fire>
+				<engine-left-fire type="bool">0</engine-left-fire>
+				<engine-right-fire type="bool">0</engine-right-fire>
+				<apu-fire type="bool">0</apu-fire>
+				<cargo-fwd-fire type="bool">0</cargo-fwd-fire>
+				<cargo-aft-fire type="bool">0</cargo-aft-fire>
+				<lavatory-fire type="bool">0</lavatory-fire>
+			</fire>
+		</failures>
+		
+		<fctl n="0">
+			<elac1 type="bool">0</elac1>
+			<elac2 type="bool">0</elac2>
+			<sec1 type="bool">0</sec1>
+			<sec2 type="bool">0</sec2>
+			<sec3 type="bool">0</sec3>
+			<fac1 type="bool">0</fac1>
+			<fac2 type="bool">0</fac2>
+			<yawdamper-active type="bool">0</yawdamper-active>
+		</fctl>
+		
+		<fire n="0">
+			<apu>
+				<temperature type="double">0</temperature>
+			</apu>
+			<engine1>
+				<temperature type="double">0</temperature>
+			</engine1>
+			<engine2>
+				<temperature type="double">0</temperature>
+			</engine2>
+			<cargo>
+				<disch type="bool">0</disch>
+				<aft>
+					<temperature type="double">0</temperature>
+				</aft>
+				<fwd>
+					<temperature type="double">0</temperature>
+				</fwd>
+			</cargo>
+			<lavatory>
+				<temperature type="double">0</temperature>
+			</lavatory>
+		</fire>
+		<fuel n="0">
+			<only-use-ctr-tank type="bool">0</only-use-ctr-tank>
+			<tank n="0">
+				<feed type="bool">0</feed>
+			</tank>
+			<tank n="1">
+				<feed type="bool">0</feed>
+			</tank>
+			<tank n="2">
+				<feed type="bool">0</feed>
+			</tank>
+			<ctr-pump-cmd-on-eng-start type="bool">0</ctr-pump-cmd-on-eng-start>
+			<refuel>
+				<left-valve type="bool">0</left-valve>
+				<center-valve type="bool">0</center-valve>
+				<right-valve type="bool">0</right-valve>
+				<refuelling type="bool">0</refuelling>
+			</refuel>
+			<valves>
+				<apu-lp-valve-cmd type="bool">0</apu-lp-valve-cmd>
+			</valves>
+			<offset-left type="double">0</offset-left>
+			<offset-right type="double">0</offset-right>
+			<fuel-used-1 type="double">0</fuel-used-1>
+			<fuel-used-2 type="double">0</fuel-used-2>
+			<mode-fault type="bool">0</mode-fault>
+		</fuel>
+		
+		<hydraulic n="0">
+			<sources>
+				<ptu>
+					<green-yellow type="double">0</green-yellow>
+					<yellow-green type="double">0</yellow-green>
+				</ptu>
+			</sources>
+			<blue-psi>0</blue-psi>
+			<green-psi>0</green-psi>
+			<yellow-psi>0</yellow-psi>
+		</hydraulic>
+		
+		<pneumatics>
+			<egt-1-factor type="double">0.36</egt-1-factor>
+			<egt-2-factor type="double">0.36</egt-2-factor>
+			<indicating>
+				<bmc1-working type="bool">0</bmc1-working>
+				<bmc2-working type="bool">0</bmc2-working>
+			</indicating>
+			<pack-1-bypass type="bool">0</pack-1-bypass>
+			<pack-2-bypass type="bool">0</pack-2-bypass>
+			<pack-1-flow type="double">0</pack-1-flow>
+			<pack-2-flow type="double">0</pack-2-flow>
+			<precooler>
+				<temp-1 type="double">0</temp-1>
+				<temp-2 type="double">0</temp-2>
+				<ovht-1 type="double">0</ovht-1>
+				<ovht-2 type="double">0</ovht-2>
+			</precooler>
+			<psi>
+				<crossbleed-duct-left type="double">0</crossbleed-duct-left>
+				<crossbleed-duct-right type="double">0</crossbleed-duct-right>
+				<crossbleed-duct-left-src type="int">0</crossbleed-duct-left-src>
+				<crossbleed-duct-right-src type="int">0</crossbleed-duct-right-src>
+				<engine-1-psi type="double">0</engine-1-psi>
+				<engine-2-psi type="double">0</engine-2-psi>
+				<engine-1-downstream-prv type="double">0</engine-1-downstream-prv>
+				<engine-2-downstream-prv type="double">0</engine-2-downstream-prv>
+				<engine-1-downstream-opv type="double">0</engine-1-downstream-opv>
+				<engine-2-downstream-opv type="double">0</engine-2-downstream-opv>
+				<engine-1-upstream-src type="double">0</engine-1-upstream-src>
+				<engine-2-upstream-src type="double">0</engine-2-upstream-src>
+			</psi>
+			<source>
+				<apu-psi type="double">0</apu-psi>
+				<gnd-psi type="double">0</gnd-psi>
+				<engine-1-lp-psi type="double">0</engine-1-lp-psi>
+				<engine-2-lp-psi type="double">0</engine-2-lp-psi>
+				<engine-1-hp-psi type="double">0</engine-1-hp-psi>
+				<engine-2-hp-psi type="double">0</engine-2-hp-psi>
+			</source>
+			<valves>
+				<apu-bleed-valve type="double">0</apu-bleed-valve>
+				<crossbleed-valve type="double">0</crossbleed-valve>
+				<engine-1-lp-valve type="double">0</engine-1-lp-valve>
+				<engine-2-lp-valve type="double">0</engine-2-lp-valve>
+				<engine-1-hp-valve type="double">0</engine-1-hp-valve>
+				<engine-2-hp-valve type="double">0</engine-2-hp-valve>
+				<engine-1-opv-valve type="double">0</engine-1-opv-valve>
+				<engine-2-opv-valve type="double">0</engine-2-opv-valve>
+				<engine-1-prv-valve type="double">0</engine-1-prv-valve>
+				<engine-2-prv-valve type="double">0</engine-2-prv-valve>
+				<engine-1-prv-valve-disag type="bool">0</engine-1-prv-valve-disag>
+				<engine-2-prv-valve-disag type="bool">0</engine-2-prv-valve-disag>
+				<wing-ice-1 type="double">0</wing-ice-1>
+				<wing-ice-2 type="double">0</wing-ice-2>
+				<pack-1 type="double">0</pack-1>
+				<pack-2 type="double">0</pack-2>
+				<starter-valve-1 type="bool">0</starter-valve-1>
+				<starter-valve-2 type="bool">0</starter-valve-2>
+			</valves>
+			<warnings>
+				<apu-bleed-not-on-cmd type="bool">0</apu-bleed-not-on-cmd>
+				<apu-bleed-not-on type="double">0</apu-bleed-not-on>
+				<bleed1-fault type="bool">0</bleed1-fault>
+				<bleed2-fault type="bool">0</bleed2-fault>
+				<crossbleed-disag type="bool">0</crossbleed-disag>
+				<crossbleed-disag-open type="bool">0</crossbleed-disag-open>
+			</warnings>
+		</pneumatics>
+		
+		<pressurization>
+			<cabinalt-norm type="double">0</cabinalt-norm>
+			<cabinpsi type="double">14.7</cabinpsi>
+			<ditchingpb type="double">14.7</ditchingpb>
+		</pressurization>
+		
+		<pitot n="0">
+			<icing type="double">0</icing>
+			<serviceable type="bool">1</serviceable>
+		</pitot>
+		
+		<pitot n="1">
+			<icing type="double">0</icing>
+			<serviceable type="bool">1</serviceable>
+		</pitot>
+		
+		<pitot n="2">
+			<icing type="double">0</icing>
+			<serviceable type="bool">1</serviceable>
+		</pitot>
+		
+		<static n="1">
+			<serviceable type="bool">1</serviceable>
+		</static>
+		
+		<static n="2">
+			<serviceable type="bool">1</serviceable>
+		</static>
+		
+		<thrust>
+			<alpha-floor type="bool">0</alpha-floor>
+			<clbreduc-ft type="double">1500</clbreduc-ft>
+			<eng-out type="bool">0</eng-out>
+			<lim-flex type="bool">0</lim-flex>
+			<lvrclb type="bool">0</lvrclb>
+			<state1 type="string">IDLE</state1>
+			<state2 type="string">IDLE</state2>
+			<toga-lk type="bool">0</toga-lk>
+			<thr-locked type="bool">0</thr-locked>
+			<thr-locked-alert type="bool">0</thr-locked-alert>
+			<thr-lock-cmd n="0" type="double">0</thr-lock-cmd>
+			<thr-lock-cmd n="1" type="double">0</thr-lock-cmd>
+			<thr-locked-flash type="bool">0</thr-locked-flash>
+			<thr-locked-time type="double">0</thr-locked-time>
+		</thrust>
+		
+		<navigation>
+			<aligned-1 type="bool">0</aligned-1>
+			<aligned-2 type="bool">0</aligned-2>
+			<aligned-3 type="bool">0</aligned-3>
+			<adr>
+				<operating-1 type="bool">0</operating-1>
+				<operating-2 type="bool">0</operating-2>
+				<operating-3 type="bool">0</operating-3>
+			</adr>
+		</navigation>
+		
+	</systems>
+	
+	<options n="0">
+		<system n="0">
+			<keyboard-mode type="bool">0</keyboard-mode>
+			<fgcamera-keys-enabled type="bool">0</fgcamera-keys-enabled>
+		</system>
+		<steep-ils type="bool">0</steep-ils>
+		<steep-ils-avail type="bool">0</steep-ils-avail>
+		<enable-ecam-actions>0</enable-ecam-actions>
+		<test-canvas type="bool">0</test-canvas>
+		<model-options>
+			<registration type="string">G-EZTB</registration>
+			<three-letter type="string">EZY</three-letter>
+			<two-letter type="string">U2</two-letter>
+			<sharklet type="bool">0</sharklet>
+			<wifi-aft type="bool">0</wifi-aft> <!-- Iridium / inmarsat satcom + wireless -->
+			<wifi-fwd type="bool">0</wifi-fwd> <!-- Fly-fy-->
+		</model-options>
+	</options>
+	
+	<instrumentation n="0">
+		<altimeter n="0">
+			<inhg type="bool">0</inhg>
+			<indicated-altitude-ft type="double">0</indicated-altitude-ft>
+			<indicated-altitude-ft-pfd type="double">0</indicated-altitude-ft-pfd>
+			<oldqnh type="double">29.92</oldqnh>
+			<serviceable type="bool">true</serviceable>
+			<std type="bool">0</std>
+		</altimeter>
+		
+		<altimeter n="1">
+			<serviceable type="bool">true</serviceable>
+		</altimeter>
+		
+		<altimeter n="2">
+			<serviceable type="bool">true</serviceable>
+		</altimeter>
+		
+		<altimeter n="3">
+			<serviceable type="bool">true</serviceable>
+		</altimeter>
+		
+		<altimeter n="4">
+			<serviceable type="bool">true</serviceable>
+		</altimeter>
+		
+		<altimeter n="5">
+			<serviceable type="bool">true</serviceable>
+		</altimeter>
+		
+		<altimeter n="6">
+			<indicated-altitude-ft type="double">0</indicated-altitude-ft>
+			<indicated-altitude-ft-pfd type="double">0</indicated-altitude-ft-pfd>
+			<oldqnh type="double">29.92</oldqnh>
+			<serviceable type="bool">true</serviceable>
+			<std type="bool">0</std>
+		</altimeter>
+		
+		<chrono n="0">
+			<started type="bool">0</started>
+			<paused type="bool">0</paused>
+			<text type="string">0' 00'</text>
+			<started-at type="int">0</started-at>
+			<elapsed-time type="int">0</elapsed-time>
+		</chrono>
+
+		<chrono n="1">
+			<started type="bool">0</started>
+			<paused type="bool">0</paused>
+			<text type="string">0' 00'</text>
+			<started-at type="int">0</started-at>
+			<elapsed-time type="int">0</elapsed-time>
+		</chrono>
+		
+		<comm n="0">
+			<frequencies>
+				<selected-mhz type="double">118.7</selected-mhz>
+				<standby-mhz type="double">121.4</standby-mhz>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0.6</volume>
+		</comm>
+		
+		<comm n="1">
+			<frequencies>
+				<selected-mhz type="double">119.4</selected-mhz>
+				<standby-mhz type="double">122.6</standby-mhz>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0.6</volume>
+		</comm>
+		
+		<comm n="2">
+			<frequencies>
+				<selected-mhz type="double">121.5</selected-mhz>
+				<standby-mhz type="double">123.2</standby-mhz>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0.6</volume>
+		</comm>
+		
+		<ddrmi n="0">
+			<vor-adf-1 type="int">1</vor-adf-1>
+			<vor-adf-2 type="int">1</vor-adf-2>
+		</ddrmi>
+		
+		<dme n="0">
+			<frequencies>
+				<selected-mhz type="double">111.15</selected-mhz>
+				<source type="string">/instrumentation/nav[0]/frequencies/selected-mhz</source>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</dme>
+		
+		<dme n="1">
+			<frequencies>
+				<selected-mhz type="double">109.55</selected-mhz>
+				<source type="string">/instrumentation/nav[1]/frequencies/selected-mhz</source>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</dme>
+		
+		<dme n="2">
+			<frequencies>
+				<selected-mhz type="double">112.8</selected-mhz>
+				<source type="string">/instrumentation/nav[2]/frequencies/selected-mhz</source>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</dme>
+		
+		<dme n="3">
+			<frequencies>
+				<selected-mhz type="double">114.8</selected-mhz>
+				<source type="string">/instrumentation/nav[3]/frequencies/selected-mhz</source>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</dme>
+		
+		<groundradar>
+			<range type="double">1.0</range>
+		</groundradar>
+		
+		<iesi>
+			<att-reset type="double">false</att-reset>
+			<att-reset-cmd type="bool">false</att-reset-cmd>
+			<display>
+				<show-mach type="bool">false</show-mach>
+			</display>
+		</iesi>
+		
+		<marker-beacon n="0">
+			<serviceable type="bool">true</serviceable>
+		</marker-beacon>
+		
+		<nav n="0">
+			<frequencies>
+				<selected-mhz type="double">111.15</selected-mhz>
+				<standby-mhz type="double">110.95</standby-mhz>
+			</frequencies>
+			<radials>
+				<selected-deg type="double">360</selected-deg>
+			</radials>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</nav>
+		
+		<nav n="1">
+			<frequencies>
+				<selected-mhz type="double">109.55</selected-mhz>
+				<standby-mhz type="double">110.55</standby-mhz>
+			</frequencies>
+			<radials>
+				<selected-deg type="double">360</selected-deg>
+			</radials>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</nav>
+		
+		<nav n="2">
+			<cdi>
+				<serviceable type="bool">true</serviceable>
+			</cdi>
+			<frequencies>
+				<selected-mhz type="double">112.8</selected-mhz>
+				<standby-mhz type="double">112.6</standby-mhz>
+			</frequencies>
+			<radials>
+				<selected-deg type="double">360</selected-deg>
+			</radials>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</nav>
+		
+		<nav n="3">
+			<cdi>
+				<serviceable type="bool">true</serviceable>
+			</cdi>
+			<frequencies>
+				<selected-mhz type="double">114.8</selected-mhz>
+				<standby-mhz type="double">114.6</standby-mhz>
+			</frequencies>
+			<radials>
+				<selected-deg type="double">360</selected-deg>
+			</radials>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</nav>
+		
+		<tcas><!-- http://wiki.flightgear.org/index.php/TCAS -->
+			<serviceable type="bool">true</serviceable><!-- TCAS ENABLE -->
+			<inputs>
+				<mode type="int">1</mode><!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
+			</inputs>
+			<voice>
+				<file-prefix type="string">Sounds/tcas/female/</file-prefix>
+				<!-- sound file path and prefix -->
+			</voice>
+			<speaker><!-- Speaker Configuration -->
+				<max-dist> 2 </max-dist><!-- Max. distance where speaker is heard -->
+				<reference-dist> 1 </reference-dist> <!-- Distance to pilot -->
+				<volume> 0.8 </volume> <!-- Volume at reference distance -->
+			</speaker>
+		</tcas>
+		
+		<transponder>
+			<airspeed-input-src type="int">0</airspeed-input-src>
+			<altimeter-input-src type="int">0</altimeter-input-src>
+		</transponder>
+		
+		<!-- See http://wiki.flightgear.org/index.php/GPWS -->
+		<mk-viii n="0">
+			<serviceable type="bool">true</serviceable>
+			<configuration-module>
+				<category-1 type="int">255</category-1>
+				<category-3 type="int">2</category-3>
+				<category-4 type="int">13</category-4>
+				<category-5 type="int">0</category-5>
+				<category-6 type="int">1</category-6>
+				<category-7 type="int">124</category-7>
+				<category-8 type="int">3</category-8>
+				<category-9 type="int">3</category-9> 
+				<category-10 type="int">6</category-10>
+				<category-13 type="int">7</category-13>
+				<category-14 type="int">0</category-14>
+			</configuration-module>
+			<input-feeders>
+				<discretes>
+					<!-- disable the built-in input feeder -->
+					<landing-flaps type="bool">false</landing-flaps>
+				</discretes>
+			</input-feeders>
+			<inputs>
+				<arinc429>
+					<decision-height-ncd type="bool">0</decision-height-ncd>
+					<decision-height type="double">250</decision-height>
+				</arinc429>
+			</inputs>
+			<speaker>
+				<max-dist type="double">2</max-dist>
+				<reference-dist type="double">5</reference-dist>
+				<volume type="double">2</volume>
+			</speaker>
+			<voice>
+				<file-prefix>Aircraft/A320-family/Sounds/GPWS/</file-prefix>
+			</voice>
+		</mk-viii>
+		
+		<pfd n="0">
+			<hundred-above type="int">99999</hundred-above>
+			<minimums type="int">99999</minimums>
+			<heading-deg type="double">0</heading-deg>
+			<heading-scale type="double">0</heading-scale>
+			<horizon-ground type="double">0</horizon-ground>
+			<horizon-pitch type="double">0</horizon-pitch>
+			<track-deg type="double">0</track-deg>
+		</pfd>
+		
+		<radar-altimeter n="0">
+			<antenna>
+				<x-offset-m type="double">-1</x-offset-m>
+				<y-offset-m type="double">0</y-offset-m>
+				<z-offset-m type="double">2.52</z-offset-m>
+			</antenna>
+			<az-step-deg type="int">10</az-step-deg>
+			<az-limit-deg type="int">30</az-limit-deg>
+			<elev-step-deg type="int">10</elev-step-deg>
+			<elev-limit type="int">30</elev-limit>
+			<max-range-m type="int">1525</max-range-m>
+			<serviceable type="bool">true</serviceable>
+			<radar-altitude-ft type="double">0</radar-altitude-ft>
+		</radar-altimeter>
+		
+		<radar-altimeter n="1">
+			<antenna>
+				<x-offset-m type="double">-1</x-offset-m>
+				<y-offset-m type="double">0</y-offset-m>
+				<z-offset-m type="double">2.52</z-offset-m>
+			</antenna>
+			<az-step-deg type="int">10</az-step-deg>
+			<az-limit-deg type="int">30</az-limit-deg>
+			<elev-step-deg type="int">10</elev-step-deg>
+			<elev-limit type="int">30</elev-limit>
+			<max-range-m type="int">1525</max-range-m>
+			<serviceable type="bool">true</serviceable>
+			<radar-altitude-ft type="double">0</radar-altitude-ft>
+		</radar-altimeter>
+		
+		<wxr>
+			<enabled type="bool">false</enabled>
+		</wxr>
+	</instrumentation>
+	
+	<modes>
+		<cpt-du-xfr type="bool">0</cpt-du-xfr>
+		<ecam-du-xfr type="bool">0</ecam-du-xfr>
+		<fo-du-xfr type="bool">0</fo-du-xfr>
+		<pfd>
+			<ILS1>0</ILS1>
+			<ILS2>0</ILS2>
+		</pfd>
+	</modes>
+
+	<input>
+		<mice n="0">
+			<mouse n="0">
+				<mode n="0">
+					<button n="3">
+						<binding n="0">
+							<script></script>
+						</binding>
+						<binding n="1">
+							<condition>
+								<and>
+									<property>/devices/status/mice/mouse[0]/button[2]</property>
+									<not><property>/sim/mouse/right-button-mode-cycle-enabled</property></not>
+								</and>
+							</condition>
+							<command>nasal</command>
+							<script>libraries.fovZoom(-1);</script>
+						</binding>
+					</button>
+					<button n="4">
+						<binding n="0">
+							<script></script>
+						</binding>
+						<binding n="1">
+							<condition>
+								<and>
+									<property>/devices/status/mice/mouse[0]/button[2]</property>
+									<not><property>/sim/mouse/right-button-mode-cycle-enabled</property></not>
+								</and>
+							</condition>
+							<command>nasal</command>
+							<script>libraries.fovZoom(1);</script>
+						</binding>
+					</button>
+				</mode>
+			</mouse>
+		</mice>
+		<keyboard>
+			<key n="4">
+				<name>CTRL-d</name>
+				<desc>Autothrottle Disconnect</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						fcu.FCUController.ATDisc();
+					</script>
+				</binding>
+			</key>
+			<key n="6">
+				<name>CTRL-f</name>
+				<desc>MCT/FLX power</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					systems.doMCTThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="8">
+				<name>Del</name>
+				<desc>CLR</desc>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("CLR", 0, "down");</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("CLR", 1, "down");</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<condition>
+							<property>/FMGC/keyboard-left</property>
+						</condition>
+						<command>nasal</command>
+						<script>mcdu.button("CLR", 0, "up");</script>
+					</binding>
+					<binding>
+						<condition>
+							<property>/FMGC/keyboard-right</property>
+						</condition>
+						<command>nasal</command>
+						<script>mcdu.button("CLR", 1, "up");</script>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="11">
+				<name>Disable MCDU keyboard mode</name>
+				<desc>Ctrl+k</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/FMGC/keyboard-left</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/FMGC/keyboard-right</property>
+					<value>0</value>
+				</binding>
+			</key>
+			<key n="24">
+				<name>Ctrl-x</name>
+				<desc>Reset zoom to default</desc>
+				<binding>
+					<command>nasal</command>
+					<script>libraries.fovZoom(0);</script>
+				</binding>
+			</key>
+			<key n="32">
+				<name>SPACE</name>
+				<desc>PTT - Push To Talk (via FGCom)</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("SP", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("SP", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>
+						space(1, modifiers.getValue());
+						if (getprop("systems/audio/acp[0]/call_chan") == "hf1") {
+							systems.HFS[0].pttToggle();
+						} elsif (getprop("systems/audio/acp[0]/call_chan") == "hf2") {
+							systems.HFS[1].pttToggle();
+						}
+					</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>nasal</command>
+						<script>
+							space(0, modifiers.getValue());
+							if (getprop("systems/audio/acp[0]/call_chan") == "hf1") {
+								systems.HFS[0].pttToggle();
+							} elsif (getprop("systems/audio/acp[0]/call_chan") == "hf2") {
+								systems.HFS[1].pttToggle();
+							}
+						</script>
+					</binding>
+				</mod-up>
+				<mod-shift>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>nasal</command>
+						<script>space(1, modifiers.getValue())</script>
+					</binding>
+					<mod-up>
+						<binding>
+							<condition>
+								<not><property>/FMGC/keyboard-left</property></not>
+								<not><property>/FMGC/keyboard-right</property></not>
+							</condition>
+							<command>nasal</command>
+							<script>space(0, modifiers.getValue())</script>
+						</binding>
+					</mod-up>
+				</mod-shift>
+			</key>
+			<key n="45">
+				<name>-</name>
+				<desc>Chat Menu</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("PLUSMINUS", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("PLUSMINUS", 1);</script>
+				</binding>
+				<repeatable type="bool">false</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>dialog-show</command>
+					<dialog-name>chat-menu</dialog-name>
+				</binding>
+			</key>
+			<key n="46">
+				<name>.</name>
+				<desc>Right brake</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("DOT", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("DOT", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>controls.applyBrakes(1, 1)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>nasal</command>
+						<script>controls.applyBrakes(0, 1)</script>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="47">
+				<name>SLASH</name>
+				<desc>Open property browser</desc>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>gui.property_browser();</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("SLASH", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("SLASH", 1);</script>
+				</binding>
+			</key>
+			<key n="48">
+				<name>0</name>
+				<desc>Move rudder left</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("0", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("0", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/controls/flight/rudder</property>
+					<step type="double">-0.05</step>
+				</binding>
+			</key>
+			<key n="49">
+				<name>1</name>
+				<desc>Captain View/Elevator Trim Up</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("1", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("1", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+				    	<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>1</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+						<not><property>/options/system/fgcamera-keys-enabled</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/controls/flight/elevator-trim</property>
+					<step>-0.001</step>
+				</binding>
+			</key>
+			<key n="50">
+				<name>2</name>
+				<desc>First Officer View/Elevator Up</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("2", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("2", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+     					<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>2</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+						<not><property>/options/system/fgcamera-keys-enabled</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value>8</value>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>
+					</condition>
+					<command>nasal</command>
+					<script>
+						setprop("controls/flight/elevator", getprop("controls/flight/elevator") - 0.05);
+					</script>
+				</binding>
+			</key>
+			<key n="51">
+				<name>3</name>
+				<desc>Overhead View/Throttle Decrease</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("3", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("3", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+				    	<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>3</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+						<not><property>/options/system/fgcamera-keys-enabled</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value>9</value>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>
+					</condition>
+					<command>nasal</command>
+					<script>
+						controls.incThrottle(-0.01, -1.0);
+					</script>
+				</binding>
+			</key>
+			<key n="52">
+				<name>4</name>
+				<desc>Forward Pedestal/Aileron Left</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("4", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("4", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+				    	<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>4</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+						<not><property>/options/system/fgcamera-keys-enabled</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value>10</value>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>
+					</condition>
+					<command>nasal</command>
+					<script>
+						setprop("controls/flight/aileron", getprop("controls/flight/aileron") - 0.05);
+					</script>
+				</binding>
+			</key>
+			<key n="53">
+				<name>5</name>
+				<desc>Aft Pedestal/Center Controls</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("5", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("5", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+				    	<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>5</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+						<not><property>/options/system/fgcamera-keys-enabled</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value>11</value>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>
+					</condition>
+					<command>nasal</command>
+					<script>
+						setprop("controls/flight/aileron", 0);
+						setprop("controls/flight/elevator", 0);
+						setprop("controls/flight/rudder", 0);
+					</script>
+				</binding>
+			</key>
+			<key n="54">
+				<name>6</name>
+				<desc>FCU Panel/Aileron Right</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("6", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("6", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+				    	<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>6</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+						<not><property>/options/system/fgcamera-keys-enabled</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value>12</value>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>
+					</condition>
+					<command>nasal</command>
+					<script>
+						setprop("controls/flight/aileron", getprop("controls/flight/aileron") + 0.05);
+					</script>
+				</binding>
+			</key>
+			<key n="55">
+				<name>7</name>
+				<desc>Elevator Trim Down</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("7", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("7", 1);</script>
+				</binding>
+				<!--binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value></value>
+				</binding-->
+				<binding>
+					<condition>
+				    	<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>7</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>
+					</condition>
+					<command>property-adjust</command>
+					<property>/controls/flight/elevator-trim</property>
+					<step>0.001</step>
+				</binding>
+			</key>
+			<key n="56">
+				<name>8</name>
+				<desc>Elevator Down</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("8", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("8", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+				    	<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>8</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<!--binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value></value>
+				</binding-->
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>						
+					</condition>
+					<command>nasal</command>
+					<script>
+						setprop("controls/flight/elevator", getprop("controls/flight/elevator") + 0.05);
+					</script>
+				</binding>
+			</key>
+			<key n="57">
+				<name>9</name>
+				<desc>Throttle Increase</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("9", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("9", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+				    	<property>/options/system/fgcamera-keys-enabled</property>
+					</condition>
+					<command>fgcamera-select</command>
+					<camera-id>9</camera-id>
+					<camera-type>aircraft</camera-type>
+				</binding>
+				<!--binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not><property>/options/system/keyboard-mode</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>/sim/current-view/view-number</property>
+					<value></value>
+				</binding-->
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<property>/options/system/keyboard-mode</property>
+					</condition>
+					<command>nasal</command>
+					<script>
+						controls.incThrottle(0.01, 1.0);
+					</script>
+				</binding>
+			</key>
+			<key n="63">
+				<binding>
+					<command>nasal</command>
+					<script>acconfig.help_dlg.open();</script>
+				</binding>
+			</key>
+			<key n="65"> 
+				<name>SHIFT-a</name>
+				<repeatable>false</repeatable>
+				<binding n="0">
+					<condition>
+						<and>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+							<or>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walk View</value>
+								</equals>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walker Orbit View</value>
+								</equals>
+							</or>
+						</and>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/slide</property>
+					<value>-1</value>
+				</binding>
+				<binding n="1">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/speed</property>
+					<property>sim/walker/speed-mps</property>
+				</binding>
+				<binding n="2">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-multiply</command>
+					<property>sim/walker/key-triggers/speed</property>
+					<factor>2.5</factor>
+				</binding>
+				<binding n="3">
+					<condition>
+						<and>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not-equals>
+							<property>sim/current-view/name</property>
+							<value>Walk View</value>
+						</not-equals>
+						<not-equals>
+							<property>sim/current-view/name</property>
+							<value>Walker Orbit View</value>
+						</not-equals>
+						</and>
+					 </condition>
+					<command>nasal</command>
+					<script>controls.speedup(-1);</script>
+				</binding>
+				<mod-up>
+					<binding n="0">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/slide</property>
+						<value>0</value>
+					</binding>
+					<binding n="1">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/speed</property>
+						<property>sim/walker/speed-mps</property>
+					</binding>
+				</mod-up>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("A", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("A", 1);</script>
+				</binding>
+			</key>
+			<key n="66">
+				<name>SHIFT-b</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("B", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("B", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>controls.applyParkingBrake(1)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>nasal</command>
+						<script>controls.applyParkingBrake(0)</script>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="67">
+				<name>SHIFT-c</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("C", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("C", 1);</script>
+				</binding>
+			</key>
+			<key n="68">
+				<name>SHIFT-d</name>
+				<desc>Autopilot Disconnect</desc>
+				<binding n="0">
+					<command>property-assign</command>
+					<condition>
+						<and>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+							<or>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walk View</value>
+								</equals>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walker Orbit View</value>
+								</equals>
+							</or>
+						</and>
+					</condition>
+					<property>sim/walker/key-triggers/slide</property>
+					<value>1</value>
+				</binding>
+				<binding n="1">
+					<command>property-assign</command>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<property>sim/walker/key-triggers/speed</property>
+					<property>sim/walker/speed-mps</property>
+				</binding>
+				<binding n="2">
+					<command>property-multiply</command>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<property>sim/walker/key-triggers/speed</property>
+					<factor>2.5</factor>
+				</binding>
+				<mod-up>
+					<binding n="0">
+						<command>property-assign</command>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<property>sim/walker/key-triggers/slide</property>
+						<value>0</value>
+					</binding>
+					<binding n="1">
+						<command>property-assign</command>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<property>sim/walker/key-triggers/speed</property>
+						<property>sim/walker/speed-mps</property>
+					</binding>
+				</mod-up>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("D", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("D", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<and>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+							<not>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walk View</value>
+								</equals>
+							</not>
+							<not>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walker Orbit View</value>
+								</equals>
+							</not>
+						</and>
+					</condition>
+					<command>nasal</command>
+					<script>
+						fcu.FCUController.APDisc();
+					</script>
+				</binding>
+			</key>
+			<key n="69">
+				<name>SHIFT-e</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("E", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("E", 1);</script>
+				</binding>
+			</key>
+			<key n="70">
+				<name>SHIFT-f</name>
+				<desc>CL power</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("F", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("F", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>
+					systems.doCLThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="71">
+				<name>SHIFT-g</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("G", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("G", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>controls.gearDown(1)</script>
+				</binding>
+			  	<mod-up>
+			   		<binding>
+			   			<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>nasal</command>
+						<script>controls.gearDown(0)</script>
+			   		</binding>
+			  	</mod-up>
+			</key>
+			<key n="72">
+				<name>SHIFT-h</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("H", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("H", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>aircraft.HUD.cycle_brightness()</script>
+				</binding>
+			</key>
+			<key n="73">
+				<name>SHIFT-i</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("I", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("I", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>aircraft.HUD.cycle_type()</script>
+				</binding>
+			</key>
+			<key n="74">
+				<name>SHIFT-j</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("J", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("J", 1);</script>
+				</binding>
+			</key>
+			<key n="75">
+				<name>SHIFT-k</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("K", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("K", 1);</script>
+				</binding>
+			</key>
+			<key n="76">
+				<name>SHIFT-l</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("L", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("L", 1);</script>
+				</binding>
+			</key>
+			<key n="77">
+				<name>SHIFT-m</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("M", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("M", 1);</script>
+				</binding>
+			</key>
+			<key n="78">
+				<name>SHIFT-n</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("N", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("N", 1);</script>
+				</binding>
+			</key>
+			<key n="79">
+				<name>SHIFT-o</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("O", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("O", 1);</script>
+				</binding>
+			</key>
+			<key n="80">
+				<name>SHIFT-p</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("P", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("P", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-toggle</command>
+					<property>/sim/panel/visibility</property>
+				</binding>
+			</key>
+			<key n="81">
+				<name>SHIFT-q</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Q", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Q", 1);</script>
+				</binding>
+			</key>
+			<key n="82">
+				<name>SHIFT-r</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("R", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("R", 1);</script>
+				</binding>
+			</key>
+			<key n="83">
+				<name>SHIFT-s</name>
+				<desc>MCDU</desc>
+				<binding n="0">
+					<command>property-assign</command>
+					<condition>
+						<and>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+							<or>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walk View</value>
+								</equals>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walker Orbit View</value>
+								</equals>
+							</or>
+						</and>
+					</condition>
+					<property>sim/walker/key-triggers/forward</property>
+					<value>-1</value>
+				</binding>
+				<binding n="1">
+					<command>property-assign</command>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<property>sim/walker/key-triggers/speed</property>
+					<property>sim/walker/speed-mps</property>
+				</binding>
+				<binding n="2">
+					<command>property-multiply</command>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<property>sim/walker/key-triggers/speed</property>
+					<factor>2.5</factor>
+				</binding>
+				<mod-up>
+					<binding n="0">
+						<command>property-assign</command>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<property>sim/walker/key-triggers/forward</property>
+						<value>0</value>
+					</binding>
+					<binding n="1">
+						<command>property-assign</command>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<property>sim/walker/key-triggers/speed</property>
+						<property>sim/walker/speed-mps</property>
+					</binding>
+				</mod-up>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("S", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("S", 1);</script>
+				</binding>
+			</key>
+			<key n="84">
+				<name>SHIFT-t</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("T", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("T", 1);</script>
+				</binding>
+			</key>
+			<key n="85">
+				<name>SHIFT-u</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("U", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("U", 1);</script>
+				</binding>
+			</key>
+			<key n="86">
+				<name>SHIFT-v</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("V", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("V", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>view.stepView(-1)</script>
+				</binding>
+			</key>
+			<key n="87">
+				<name>SHIFT-w</name>
+				<desc>MCDU</desc>
+				<binding n="0">
+					<command>property-assign</command>
+					<condition>
+						<and>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+							<or>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walk View</value>
+								</equals>
+								<equals>
+									<property>sim/current-view/name</property>
+									<value>Walker Orbit View</value>
+								</equals>
+							</or>
+						</and>
+					</condition>
+					<property>sim/walker/key-triggers/forward</property>
+					<value>1</value>
+				</binding>
+				<binding n="1">
+					<command>property-assign</command>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<property>sim/walker/key-triggers/speed</property>
+					<property>sim/walker/speed-mps</property>
+				</binding>
+				<binding n="2">
+					<command>property-multiply</command>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<property>sim/walker/key-triggers/speed</property>
+					<factor>5.0</factor>
+				</binding>
+				<mod-up>
+					<binding n="0">
+						<command>property-assign</command>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<property>sim/walker/key-triggers/forward</property>
+						<value>0</value>
+					</binding>
+					<binding n="1">
+						<command>property-assign</command>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<property>sim/walker/key-triggers/speed</property>
+						<property>sim/walker/speed-mps</property>
+					</binding>
+				</mod-up>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("W", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("W", 1);</script>
+				</binding>
+			</key>
+			<key n="88">
+				<name>SHIFT-x</name>
+				<desc>Increase field of view</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("X", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("X", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>libraries.fovZoom(1);</script>
+				</binding>
+			</key>
+			<key n="89">
+				<name>SHIFT-y</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Y", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Y", 1);</script>
+				</binding>
+			</key>
+			<key n="90">
+				<name>SHIFT-z</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Z", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Z", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>environment.decreaseVisibility()</script>
+				</binding>
+			</key>
+			<key n="97">
+				<name>a</name>
+				<desc>Slide left</desc>
+				<repeatable>false</repeatable>
+				<binding n="0">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<equals>
+							<property>sim/current-view/name</property>
+							<value>Walk View</value>
+						</equals>
+					 </condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/slide</property>
+					<value>-1</value>
+				</binding>
+				<binding n="1">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/speed</property>
+					<property>sim/walker/speed-mps</property>
+				</binding>
+				<binding n="2">
+					<condition>
+						<and>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not-equals>
+							<property>sim/current-view/name</property>
+							<value>Walk View</value>
+						</not-equals>
+						<not-equals>
+							<property>sim/current-view/name</property>
+							<value>Walker Orbit View</value>
+						</not-equals>
+						</and>
+					</condition>
+					<command>nasal</command>
+					<script>controls.speedup(1);</script>
+				</binding>
+				<binding n="3">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<equals>
+							<property>sim/current-view/name</property>
+							<value>Walker Orbit View</value>
+						</equals>
+					</condition>
+					 <command>property-adjust</command>
+					<property>/sim/walker/model-heading-deg</property>
+					<min>0</min>
+					<max>360</max>
+					<wrap type="bool">true</wrap>
+					<step type="int">-10</step>
+				</binding>
+				<mod-up>
+					<binding n="0">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/slide</property>
+						<value>0</value>
+					</binding>
+					<binding n="1">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/speed</property>
+						<property>sim/walker/speed-mps</property>
+					</binding>
+				</mod-up>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("A", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("A", 1);</script>
+				</binding>
+			</key>
+			<key n="98">
+				<name>b</name>
+				<desc>Apply all brakes</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("B", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("B", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>controls.applyBrakes(1)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>nasal</command>
+						<script>controls.applyBrakes(0)</script>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="99">
+				<name>c</name>
+				<desc>Reset view to center</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("C", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("C", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>libraries.resetView();</script>
+				</binding>
+			</key>
+			<key n="100">
+				<name>d</name>
+				<desc>Slide right</desc>
+				<repeatable>false</repeatable>
+				<binding n="0">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<equals>
+							<property>sim/current-view/name</property>
+							<value>Walk View</value>
+						</equals>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/slide</property>
+					<value>1</value>
+				</binding>
+				<binding n="1">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/speed</property>
+					<property>sim/walker/speed-mps</property>
+				</binding>
+				<binding n="2">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<equals>
+							<property>sim/current-view/name</property>
+							<value>Walker Orbit View</value>
+						</equals>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/walker/model-heading-deg</property>
+					<min>0</min>
+					<max>360</max>
+					<wrap type="bool">true</wrap>
+					<step type="int">10</step>
+				</binding>
+				<mod-up>
+					<binding n="0">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/slide</property>
+						<value>0</value>
+					</binding>
+					<binding n="1">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/speed</property>
+						<property>sim/walker/speed-mps</property>
+					</binding>
+				</mod-up>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("D", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("D", 1);</script>
+				</binding>
+			</key>
+			<key n="101">
+				<name>e</name>
+				<desc>Thrust Levers Idle</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("E", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("E", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>
+					systems.doIdleThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="102">
+				<name>f</name>
+				<desc>TOGA power</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("F", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("F", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>
+					systems.doTOGAThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="103">
+				<name>g</name>
+				<desc>Gear Up</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("G", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("G", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>controls.gearDown(-1)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>nasal</command>
+						<script>controls.gearDown(0)</script>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="104">
+				<name>h</name>
+				<desc>HUD Master Switch</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("H", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("H", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>aircraft.HUD.cycle_color()</script>
+				</binding>
+			</key>
+			<key n="105">
+				<name>i</name>
+				<desc>Change view to lights</desc>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("I", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("I", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>libraries.lightsView();</script>
+				</binding>
+			</key>
+			<key n="106">
+				<name>j</name>
+				<desc>Decrease spoilers</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("J", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("J", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>controls.stepSpoilers(-1)</script>
+				</binding>
+			</key>
+			<key n="107">
+				<name>k</name>
+				<desc>Increase spoilers</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("K", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("K", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>controls.stepSpoilers(1)</script>
+				</binding>
+			</key>
+			<key n="108">
+				<name>l</name>
+				<desc>Flashlight</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("L", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("L", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-cycle</command>
+					<property>sim/rendering/als-secondary-lights/use-flashlight</property>
+					<value>0</value>
+					<value>1</value>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-cycle</command>
+					<property>sim/rendering/als-secondary-lights/use-searchlight</property>
+					<value>0</value>
+					<value>1</value>
+				</binding>
+			</key>
+			<key n="109">
+				<name>m</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("M", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("M", 1);</script>
+				</binding>
+			</key>
+			<key n="110">
+				<name>n</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("N", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("N", 1);</script>
+				</binding>
+			</key>
+			<key n="111">
+				<name>o</name>
+				<desc>Change view to overhead</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("O", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("O", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>libraries.overheadView();</script>
+				</binding>
+			</key>
+			<key n="112">
+				<name>p</name>
+				<desc>Toggle the pause state of the sim</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("P", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("P", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>pause</command>
+				</binding>
+			</key>
+			<key n="113">
+				<name>q</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Q", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Q", 1);</script>
+				</binding>
+			</key>
+			<key n="114">
+				<name>r</name>
+				<desc>MCDU</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("R", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("R", 1);</script>
+				</binding>
+			</key>
+			<key n="115">
+				<name>s</name>
+				<desc>Walk backward</desc>
+				<repeatable>false</repeatable>
+				<binding n="0">
+					<condition>
+						<and>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<or>
+						<equals>
+							<property>sim/current-view/name</property>
+							<value>Walk View</value>
+						</equals>
+						<equals>
+							<property>sim/current-view/name</property>
+							<value>Walker Orbit View</value>
+						</equals>
+						</or>
+						</and>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/forward</property>
+					<value>-1</value>
+				</binding>
+				<binding n="1">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/speed</property>
+					<property>sim/walker/speed-mps</property>
+				</binding>
+				<binding n="2">
+					<condition>
+						<and>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+						<not-equals>
+							<property>sim/current-view/name</property>
+							<value>Walk View</value>
+						</not-equals>
+						<not-equals>
+							<property>sim/current-view/name</property>
+							<value>Walker Orbit View</value>
+						</not-equals>
+						</and>
+					</condition>
+					<command>nasal</command>
+					<script>controls.startEngine(1)</script>
+				</binding>
+				<mod-up>
+					<binding n="0">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/forward</property>
+						<value>0</value>
+					</binding>
+					<binding n="1">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/speed</property>
+						<property>sim/walker/speed-mps</property>
+					</binding>
+					<binding n="2">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>nasal</command>
+						<script>controls.startEngine(0)</script>
+					</binding>
+				</mod-up>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("S", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("S", 1);</script>
+				</binding>
+			</key>
+			<key n="116">
+				<name>t</name>
+				<desc>Warp time forwards</desc>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("T", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("T", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-adjust</command>
+					<property>/sim/time/warp-delta</property>
+					<step type="int">30</step>
+					<max type="int">720</max>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>show-message</command>
+					<id>warp-feedback</id>
+					<label>Current time: %s</label>
+					<property>/instrumentation/clock/local-short-string</property>
+				</binding>
+				<mod-up>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>/sim/time/warp-delta</property>
+						<value type="int">0</value>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="117">
+				<name>u</name>
+				<desc>Change view to pedestal</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("U", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("U", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>libraries.pedestalView();</script>
+				</binding>
+			</key>
+			<key n="118">
+				<name>v</name>
+				<desc>Scroll through views</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("V", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("V", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>view.stepView(1)</script>
+				</binding>
+			</key>
+			<key n="119">
+				<name>w</name>
+				<desc>Walk forward</desc>
+				<binding n="0">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/forward</property>
+					<value>1</value>
+				</binding>
+				<binding n="1">
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>property-assign</command>
+					<property>sim/walker/key-triggers/speed</property>
+					<property>sim/walker/speed-mps</property>
+				</binding>
+				<mod-up>
+					<binding n="0">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/forward</property>
+						<value>0</value>
+					</binding>
+					<binding n="1">
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>sim/walker/key-triggers/speed</property>
+						<property>sim/walker/speed-mps</property>
+					</binding>
+				</mod-up>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("W", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("W", 1);</script>
+				</binding>
+			</key>
+			<key n="120">
+				<name>x</name>
+				<desc>Decrease field of view</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("X", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("X", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>libraries.fovZoom(-1);</script>
+				</binding>
+			</key>
+			<key n="121">
+				<name>y</name>
+				<desc>Change view to autopilot</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Y", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Y", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>libraries.autopilotView();</script>
+				</binding>
+			</key>
+			<key n="122">
+				<name>z</name>
+				<desc>Increase Visibility</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Z", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.button("Z", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>environment.increaseVisibility()</script>
+				</binding>
+			</key>
+			<key n="127">
+				<name>DEL</name>
+				<desc>Simple Engage/Disengage reversers</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					systems.toggleFastRevThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="257">
+				<name>F1</name>
+				<desc>Disengage/Decrease reversers</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					systems.unRevThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="258">
+				<name>F2</name>
+				<desc>Engage/Increase reversers</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+					systems.doRevThrust();
+					</script>
+				</binding>
+			</key>
+			<key n="2">
+				<name>Ctrl-b</name>
+				<desc>Cycle speedbrake setting</desc>
+				<binding>
+					<condition>
+						<and>
+							<not-equals>
+								<property>/controls/flight/speedbrake-arm</property>
+								<value>1</value>
+							</not-equals>
+							<or>
+								<equals>
+									<property>/gear/gear[1]/wow</property>
+									<value>1</value>
+								</equals>
+								<equals>
+									<property>/gear/gear[2]/wow</property>
+									<value>1</value>
+								</equals>
+							</or>
+						</and>
+					</condition>
+					<command>property-cycle</command>
+					<property>/controls/flight/speedbrake</property>
+					<value>0.0</value>
+					<value>1.0</value>
+				</binding>
+				<binding>
+					<condition>
+						<and>
+							<not-equals>
+								<property>/controls/flight/speedbrake-arm</property>
+								<value>1</value>
+							</not-equals>
+							<equals>
+								<property>/gear/gear[1]/wow</property>
+								<value>0</value>
+							</equals>
+							<equals>
+								<property>/gear/gear[2]/wow</property>
+								<value>0</value>
+							</equals>
+						</and>
+					</condition>
+					<command>property-cycle</command>
+					<property>/controls/flight/speedbrake</property>
+					<value>0.0</value>
+					<value>0.5</value>
+					<value>1.0</value>
+				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/controls/flight/speedbrake-arm</property>
+					<value>0</value>
+				</binding>
+			</key>
+			<key n="356">
+				<name>Left</name>
+				<desc>Move aileron left (or adjust AP heading.)</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.arrowbutton("left", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.arrowbutton("left", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>
+						if (getprop("/sim/freeze/replay-state"))
+							controls.replaySkip(-5);
+						else
+							controls.incAileron(-0.05, -1.0)
+					</script>
+				</binding>
+				<mod-shift>
+					<desc>Look left</desc>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>/sim/current-view/goal-heading-offset-deg</property>
+						<property>/sim/view/config/left-direction-deg</property>
+					</binding>
+				</mod-shift>
+			</key>
+			<key n="357">
+				<name>Up</name>
+				<desc>Elevator down or decrease autopilot altitude</desc>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.arrowbutton("up", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.arrowbutton("up", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>
+						if (getprop("/sim/freeze/replay-state"))
+							controls.speedup(1);
+						else
+							controls.incElevator(0.05, -100)
+					</script>
+				</binding>
+				<mod-shift>
+					<desc>Look forward</desc>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>/sim/current-view/goal-heading-offset-deg</property>
+						<property>/sim/view/config/front-direction-deg</property>
+					</binding>
+				</mod-shift>
+			</key>
+			<key n="358">
+				<name>Right</name>
+				<desc>Move aileron right (or adjust AP heading.)</desc>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.arrowbutton("right", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.arrowbutton("right", 1);</script>
+				</binding>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>
+						if (getprop("/sim/freeze/replay-state"))
+							controls.replaySkip(5);
+						else
+							controls.incAileron(0.05, 1.0)
+					</script>
+					<step type="double">0.05</step>
+				</binding>
+				<mod-shift>
+					<desc>Look right</desc>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>/sim/current-view/goal-heading-offset-deg</property>
+						<property>/sim/view/config/right-direction-deg</property>
+					</binding>
+				</mod-shift>
+			</key>
+			<key n="359">
+				<name>Down</name>
+				<desc>Elevator up or increase autopilot altitude</desc>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-left</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.arrowbutton("down", 0);</script>
+				</binding>
+				<binding>
+					<condition>
+						<property>/FMGC/keyboard-right</property>
+					</condition>
+					<command>nasal</command>
+					<script>mcdu.arrowbutton("down", 1);</script>
+				</binding>
+				<repeatable type="bool">true</repeatable>
+				<binding>
+					<condition>
+						<not><property>/FMGC/keyboard-left</property></not>
+						<not><property>/FMGC/keyboard-right</property></not>
+					</condition>
+					<command>nasal</command>
+					<script>
+						if (getprop("/sim/freeze/replay-state"))
+							controls.speedup(-1);
+						else
+							controls.incElevator(-0.05, 100)
+					</script>
+				</binding>
+				<mod-shift>
+					<desc>Look backwards</desc>
+					<binding>
+						<condition>
+							<not><property>/FMGC/keyboard-left</property></not>
+							<not><property>/FMGC/keyboard-right</property></not>
+						</condition>
+						<command>property-assign</command>
+						<property>/sim/current-view/goal-heading-offset-deg</property>
+						<property>/sim/view/config/back-direction-deg</property>
+					</binding>
+				</mod-shift>
+			</key>
+			<key n="22">
+				<name>Ctrl-V</name>
+				<desc>Select default view (pilot or copilot)</desc>
+				<binding>
+					<condition>
+						<equals>
+							<property>/options/system/fo-view</property>
+							<value type="double">1</value>
+						</equals>
+					</condition>
+					<command>nasal</command>
+					<script>view.setViewByIndex(100);</script>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+							<property>/options/system/fo-view</property>
+							<value type="double">0</value>
+						</equals>
+					</condition>
+					<command>nasal</command>
+					<script>view.setViewByIndex(0);</script>
+				</binding>
+			</key>
+		</keyboard>
+	</input>
+	
+	<aircraft>
+		<door n="0">
+			<x-m>16.582</x-m>
+			<y-m>9.702</y-m>
+			<z-m>3.642</z-m>
+		</door>
+		<jetway-hood-deg type="double">3</jetway-hood-deg>
+	</aircraft>
+	
+	<nasal>
+        <notifications>
+            <file>Aircraft/A320-family/Nasal/emesary/M_frame_notification.nas</file>
+        </notifications>
+		<pts>
+			<file>Aircraft/A320-family/Nasal/Libraries/property-tree-setup.nas</file>
+		</pts>
+		<libraries>
+			<file>Aircraft/A320-family/Nasal/Libraries/libraries.nas</file>
+			<file>Aircraft/A320-family/Nasal/Libraries/buttons.nas</file>
+			<file>Aircraft/A320-family/Nasal/Libraries/controls-override.nas</file>
+			<file>Aircraft/A320-family/Nasal/Libraries/custom-views.nas</file>
+			<file>Aircraft/A320-family/Nasal/Libraries/shake.nas</file>
+			<file>Aircraft/A320-family/Nasal/Libraries/sounds.nas</file>
+			<file>Aircraft/A320-family/Nasal/Libraries/zoom-views.nas</file>
+		</libraries>
+		<acconfig>
+			<file>Aircraft/A320-family/AircraftConfig/acconfig.nas</file>
+		</acconfig>
+		<effects>
+			<file>Aircraft/A320-family/Nasal/Effects/icing.nas</file>
+			<file>Aircraft/A320-family/Nasal/Effects/light-manager.nas</file>
+			<file>Aircraft/A320-family/Nasal/Effects/thunder-effects.nas</file>
+			<file>Aircraft/A320-family/Nasal/Effects/tyresmoke.nas</file>
+		</effects>
+		<systems>
+			<file>Aircraft/A320-family/Nasal/Systems/APU.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/electrical.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/pneumatics.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/hydraulics.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/fuel.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/FADEC/engines-common.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/ADIRS/ADR.nas</file>
+			<file>Aircraft/A320-family/Nasal/Panels/SwitchingPanel.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/Comm/HF.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/brakesystem.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/fire.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/ground_services.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/payload.nas</file>
+			<file>Aircraft/A320-family/Nasal/Panels/clock.nas</file>
+		</systems>
+		<ecam>
+			<file>Aircraft/A320-family/Nasal/ECAM/SystemDisplay.nas</file>
+			<file>Aircraft/A320-family/Nasal/ECAM/ECAM-nodes.nas</file>
+			<file>Aircraft/A320-family/Nasal/ECAM/ECAM-main.nas</file>
+			<file>Aircraft/A320-family/Nasal/ECAM/ECAM-controller.nas</file>
+			<file>Aircraft/A320-family/Nasal/ECAM/ECAM-logic.nas</file>
+			<file>Aircraft/A320-family/Nasal/ECAM/ECAM-messages.nas</file>
+			<file>Aircraft/A320-family/Nasal/ECAM/ECAM-phases.nas</file>
+		</ecam>
+		<fadec>
+			<file>Aircraft/A320-family/Nasal/Systems/FADEC/fadec-common.nas</file>
+		</fadec>
+		<fbw>
+			<file>Aircraft/A320-family/Nasal/FBW/it-fbw.nas</file>
+		</fbw>
+		<fcu>
+			<file>Aircraft/A320-family/Nasal/FMGC/FCU.nas</file>
+			<file>Aircraft/A320-family/Nasal/Panels/efis.nas</file>
+		</fcu>
+		<fmgc>
+			<file>Aircraft/A320-family/Nasal/FMGC/flightplan-delegates.nas</file>
+			<file>Aircraft/A320-family/Nasal/FMGC/flightplan-waypoints.nas</file>
+			<file>Aircraft/A320-family/Nasal/FMGC/flightplan.nas</file>
+			<file>Aircraft/A320-family/Nasal/FMGC/FMGC.nas</file>
+			<file>Aircraft/A320-family/Nasal/FMGC/FMGC-b.nas</file>
+			<file>Aircraft/A320-family/Nasal/FMGC/FMGC-c.nas</file>
+			<file>Aircraft/A320-family/Nasal/FMGC/winds.nas</file>
+		</fmgc>
+		<mcdu>
+			<file>Aircraft/A320-family/Nasal/MCDU/DUPLICATE.nas</file> <!-- dynamic page - init before others as used in various pages -->
+			<file>Aircraft/A320-family/Nasal/MCDU/DIRTO.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/LATREV.nas</file> 	
+			<file>Aircraft/A320-family/Nasal/MCDU/VERTREV.nas</file> 	
+			<file>Aircraft/A320-family/Nasal/MCDU/DEPARTURE.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/ARRIVAL.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/AIRWAYS.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/CLOSESTAIRPORT.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/RECEIVEDMESSAGES.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/PILOTWAYPOINT.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/HOLD.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/F-PLN.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/WINDCLB.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/WINDCRZ.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/WINDDES.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/WINDHIST.nas</file> 
+			<file>Aircraft/A320-family/Nasal/MCDU/ATIS.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/FLIGHTLOG.nas</file>   <!-- Last Dynamic Page -->
+			<file>Aircraft/A320-family/Nasal/MCDU/MCDU.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/INITA.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/IRSINIT.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/ROUTESELECTION.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/INITB.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/FUELPRED.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/PROG.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/PERFAPPR.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/PERFCLB.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/PERFCRZ.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/PERFDES.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/PERFGA.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/PERFTO.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/RADNAV.nas</file>
+			<file>Aircraft/A320-family/Nasal/MCDU/DATA.nas</file>
+		</mcdu>
+		<!-- Traffic layer from E-jet -->
+		<traffic>
+			<file>Aircraft/A320-family/Nasal/Displays/projection.nas</file>
+			<file>Aircraft/A320-family/Nasal/Displays/traffic.nas</file>
+		</traffic>
+		<!-- Canvas -->
+		<canvas_pfd>
+			<file>Aircraft/A320-family/Models/Instruments/PFD/PFD.nas</file>
+		</canvas_pfd>
+		<canvas_nd>
+			<file>Aircraft/A320-family/Models/Instruments/ND/canvas/ND.nas</file>
+		</canvas_nd>
+		<canvas_ecam>
+			<file>Aircraft/A320-family/Nasal/emesary/exec.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Upper-ECAM/Upper-ECAM.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-base.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-APU.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-bleed.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-cond.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-cruise.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-door.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-elec.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-eng.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-fctl.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-fuel.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-hyd.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-press.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-sts.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM-wheel.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/Lower-ECAM/Lower-ECAM.nas</file>
+		</canvas_ecam>
+		<canvas_iesi>
+			<file>Aircraft/A320-family/Models/Instruments/IESI/IESI.nas</file>
+		</canvas_iesi>
+		<canvas_mcdu>
+			<file>Aircraft/A320-family/Models/Instruments/MCDU/MCDU-funcs.nas</file>
+			<file>Aircraft/A320-family/Models/Instruments/MCDU/MCDU.nas</file>
+		</canvas_mcdu>
+		<canvas_qrh>
+			<file>Aircraft/A320-family/Nasal/QRH/QRH.nas</file>
+		</canvas_qrh>
+		<mcdu_scratchpad> <!-- delay till after canvas mcdu -->
+			<file>Aircraft/A320-family/Nasal/FMGC/mcdu-messages.nas</file>
+		</mcdu_scratchpad>
+		<!-- Autopush -->
+		<autopush>
+			<file>Aircraft/A320-family/Nasal/Autopush/autopush.nas</file>
+		</autopush>
+		<autopush_driver>
+			<file>Aircraft/A320-family/Nasal/Autopush/driver.nas</file>
+		</autopush_driver>
+		<dynarr>
+			<file>Aircraft/A320-family/Nasal/Autopush/dynarr.nas</file>
+		</dynarr>
+		<autopush_route>
+			<file>Aircraft/A320-family/Nasal/Autopush/route.nas</file>
+		</autopush_route>
+		<!-- Panels -->
+		<rmp>
+			<file>Aircraft/A320-family/Nasal/Panels/rmp.nas</file>
+		</rmp>
+		<acp>
+			<file>Aircraft/A320-family/Nasal/Panels/acp.nas</file>
+		</acp>
+		<atc>
+			<file>Aircraft/A320-family/Nasal/Panels/atc.nas</file>
+		</atc>
+		<atsu>
+			<file>Aircraft/A320-family/Nasal/Systems/Comm/Dictionary.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/Comm/Notification.nas</file>
+			<file>Aircraft/A320-family/Nasal/Systems/Comm/CPDLC.nas</file>
+		</atsu>
+		<dmc>
+			<file>Aircraft/A320-family/Nasal/Displays/DMC.nas</file>
+		</dmc>
+		<Dialogs>
+			<file>Aircraft/A320-family/gui/dialogs/refuel.nas</file>
+			<file>Aircraft/A320-family/gui/dialogs/rmp.nas</file>
+		</Dialogs>
+		<save>
+			<file>Aircraft/A320-family/Nasal/Systems/save.nas</file>
+		</save>
+		<Simbrief>
+			<file>Aircraft/A320-family/Nasal/FMGC/SimbriefParser.nas</file>
+		</Simbrief>
+	</nasal>
+
+	<maintainance>
+		<cockpit-cleaness-factor type="float">1.0</cockpit-cleaness-factor>
+	</maintainance>
+
+</PropertyList>

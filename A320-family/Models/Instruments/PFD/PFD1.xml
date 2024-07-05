@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!-- Copyright (c) 2020 Josh Davidson (Octal450) -->
+
+<PropertyList>
+
+	<path>res/PFD1.ac</path>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>pfd1.screen</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>canvas_pfd.showPFD1();</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>material</type>
+		<object-name>pfd1.screen</object-name>
+		<emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+			<factor-prop>controls/lighting/DU/du1</factor-prop>
+		</emission>
+	</animation>
+   
+	<effect>
+		<inherits-from>Aircraft/A320-family/Models/Effects/display</inherits-from>
+		<object-name>pfd1.screen</object-name>
+	</effect>
+
+</PropertyList>

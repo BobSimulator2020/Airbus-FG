@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2020 Josh Davidson (Octal450) -->
+
+<!-- A3XX Aircraft Config Dialog -->
+
+<PropertyList>
+
+	<name>announcements</name>
+	<layout>vbox</layout>
+	
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>Announcements</label>
+		</text>
+		<button>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+		
+	<group>
+		<layout>hbox</layout>
+
+		<group>
+			<layout>vbox</layout>
+
+			<checkbox>
+				<label>F/A - Boarding</label>
+				<halign>left</halign>
+				<property>/sim/sounde/fa_boarding</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>F/A - Welcome</label>
+				<halign>left</halign>
+				<property>/sim/sounde/fa_welcome</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Cpt - Welcome</label>
+				<halign>left</halign>
+				<property>/sim/sounde/cpt_welcome</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Cpt - Doors Check</label>
+				<halign>left</halign>
+				<property>/sim/sounde/cpt_doors</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>F/A - Safety Brief </label>
+				<halign>left</halign>
+				<property>/sim/sounde/fa_safety</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Cpt - Prepare for Takeoff</label>
+				<halign>left</halign>
+				<property>/sim/sounde/cpt_takeoff</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>F/A - Seatbelt Turned Off</label>
+				<halign>left</halign>
+				<property>/sim/sounde/fa_seatbelt10k</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>F/A - Descent</label>
+				<halign>left</halign>
+				<property>/sim/sounde/fa_descent</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Cpt - Prepare for Landing</label>
+				<halign>left</halign>
+				<property>/sim/sounde/cpt_landing</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>F/A - Landed</label>
+				<halign>left</halign>
+				<property>/sim/sounde/fa_landed</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			</group>
+			
+		</group>
+	
+</PropertyList>

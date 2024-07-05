@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2020 Josh Davidson (Octal450) -->
+
+<!-- A3XX Aircraft Config Dialog -->
+
+<PropertyList>
+
+	<name>aircraft-config</name>
+	<layout>vbox</layout>
+	
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>Aircraft Configuration V1.5.1</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		<button>
+			<row>0</row>
+			<col>0</col>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>?</legend>
+			<binding>
+				<command>nasal</command>
+				<script>
+				acconfig.help_dlg.open();
+				</script>
+			</binding>
+		</button>
+		<button>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+		
+	<group>
+		<layout>hbox</layout>
+
+		<group>
+			<layout>vbox</layout>
+			
+			<group>
+				<layout>vbox</layout>
+				
+				<button>
+					<halign>center</halign>
+					<legend>Welcome</legend>
+					<pref-width>140</pref-width>
+					<binding>
+						<command>nasal</command>
+						<script>
+						acconfig.welcome_dlg.open();
+						</script>
+					</binding>
+				</button>
+				<button>
+					<halign>center</halign>
+					<legend>Select Livery</legend>
+					<pref-width>140</pref-width>
+					<binding>
+						<command>nasal</command>
+						<script>
+						aircraft.livery.dialog.toggle();
+						</script>
+					</binding>
+				</button>
+				<button>
+					<halign>center</halign>
+					<legend>DU Quality</legend>
+					<pref-width>140</pref-width>
+					<binding>
+						<command>nasal</command>
+						<script>
+						acconfig.du_quality.open();
+						</script>
+					</binding>
+				</button>
+				<button>
+					<halign>center</halign>
+					<legend>About Aircraft</legend>
+					<pref-width>140</pref-width>
+					<binding>
+						<command>nasal</command>
+						<script>
+						acconfig.about_dlg.open();
+						</script>
+					</binding>
+				</button>
+			</group>
+			
+			<group>
+				<layout>vbox</layout>
+				
+				<group>
+					<layout>hbox</layout>
+
+					<hrule>
+						<stretch type="bool">true</stretch>
+					</hrule>
+					<text>
+						<label>Load Panel State</label>
+					</text>
+					<hrule>
+						<stretch type="bool">true</stretch>
+					</hrule>
+				</group>
+				
+				<group>
+					<layout>vbox</layout>
+					
+					<button>
+						<halign>center</halign>
+						<legend>Cold and Dark</legend>
+						<pref-width>140</pref-width>
+						<enable>
+							<and>
+								<not><property>/systems/acconfig/autoconfig-running</property></not>
+								<property>/gear/gear[0]/wow</property>
+								<property>/gear/gear[1]/wow</property>
+								<property>/gear/gear[2]/wow</property>
+							</and>
+						</enable>
+						<binding>
+							<command>nasal</command>
+							<script>acconfig.colddark();</script>
+						</binding>
+						<binding>
+							<command>dialog-close</command>
+						</binding>
+					</button>
+					<button>
+						<halign>center</halign>
+						<legend>Ready to Start Eng</legend>
+						<pref-width>140</pref-width>
+						<enable>
+							<and>
+								<not><property>/systems/acconfig/autoconfig-running</property></not>
+								<property>/gear/gear[0]/wow</property>
+								<property>/gear/gear[1]/wow</property>
+								<property>/gear/gear[2]/wow</property>
+							</and>
+						</enable>
+						<binding>
+							<command>nasal</command>
+							<script>acconfig.beforestart();</script>
+						</binding>
+						<binding>
+							<command>dialog-close</command>
+						</binding>
+					</button>
+					<button>
+						<halign>center</halign>
+						<legend>Ready for Taxi</legend>
+						<pref-width>140</pref-width>
+						<enable>
+							<and>
+								<not><property>/systems/acconfig/autoconfig-running</property></not>
+								<property>/gear/gear[0]/wow</property>
+								<property>/gear/gear[1]/wow</property>
+								<property>/gear/gear[2]/wow</property>
+							</and>
+						</enable>
+						<binding>
+							<command>nasal</command>
+							<script>acconfig.taxi();</script>
+						</binding>
+						<binding>
+							<command>dialog-close</command>
+						</binding>
+					</button>
+					<button>
+						<halign>center</halign>
+						<legend>Ready for Takeoff</legend>
+						<pref-width>140</pref-width>
+						<enable>
+							<and>
+								<not><property>/systems/acconfig/autoconfig-running</property></not>
+								<property>/gear/gear[0]/wow</property>
+								<property>/gear/gear[1]/wow</property>
+								<property>/gear/gear[2]/wow</property>
+							</and>
+						</enable>
+						<binding>
+							<command>nasal</command>
+							<script>acconfig.takeoff();</script>
+						</binding>
+						<binding>
+							<command>dialog-close</command>
+						</binding>
+					</button>
+				</group>
+			</group>
+		</group>
+		
+		<vrule/>
+		
+		<group>
+			<layout>vbox</layout>
+
+			<button>
+				<legend>Ground Services</legend>
+				<halign>center</halign>
+				<padding>5</padding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.groundservices_dlg.open();
+					</script>
+				</binding>
+			</button>
+
+			<hrule/>
+			
+			<checkbox>
+				<label>Keyboard Mode (See Aircraft Help)</label>
+				<halign>left</halign>
+				<property>/options/system/keyboard-mode</property>
+				<binding>
+					<command>property-toggle</command>
+					<property>/options/system/keyboard-mode</property>
+				</binding>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.writeSettings();
+					</script>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Enable FGCamera 0-9 keys</label>
+				<halign>left</halign>
+				<enable>/sim/fgcamera/enable</enable>
+				<property>/options/system/fgcamera-keys-enabled</property>
+				<binding>
+					<command>property-toggle</command>
+					<property>/options/system/fgcamera-keys-enabled</property>
+				</binding>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.writeSettings();
+					</script>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<!-- TODO Comment back in, when fully implemented -->
+			<checkbox>
+				<label>Weight in KG</label>
+				<halign>left</halign>
+				<property>/options/system/weight-kgs</property>
+				<binding>
+					<command>property-toggle</command>
+					<property>/options/system/weight-kgs</property>
+				</binding>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.writeSettings();
+					</script>
+				</binding>
+				<live>true</live>
+			</checkbox>
+
+			<checkbox>
+				<label>ADIRS Aligns Instantly</label>
+				<halign>left</halign>
+				<property>/controls/adirs/skip</property>
+				<binding>
+					<command>property-toggle</command>
+					<property>/controls/adirs/skip</property>
+				</binding>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.writeSettings();
+					</script>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Allow APU Oil Consumption</label>
+				<halign>left</halign>
+				<property>/systems/apu/oil/allow-oil-consumption</property>
+				<binding>
+					<command>property-toggle</command>
+					<property>/systems/apu/oil/allow-oil-consumption</property>
+				</binding>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.writeSettings();
+					</script>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>First Officer is the Pilot Flying</label>
+				<halign>left</halign>
+				<property>/options/system/fo-view</property>
+				<binding>
+					<command>property-toggle</command>
+					<property>/options/system/fo-view</property>
+				</binding>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.writeSettings();
+					</script>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Use Seperate Tiller Axis</label>
+				<halign>left</halign>
+				<property>/systems/acconfig/options/seperate-tiller-axis</property>
+				<binding>
+					<command>property-toggle</command>
+					<property>/systems/acconfig/options/seperate-tiller-axis</property>
+				</binding>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.writeSettings();
+					</script>
+				</binding>
+				<live>true</live>
+			</checkbox>
+
+			<checkbox>
+				<!-- TODO there might be a better way to formulate this. -->
+				<label>Save States Between Sessions</label>
+				<halign>left</halign>
+				<property>/systems/acconfig/options/save-state</property>
+				<binding>
+					<command>property-toggle</command>
+					<property>/options/system/save-state</property>
+				</binding>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.writeSettings();
+					</script>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+			
+				<button>
+					<legend>FBW Settings</legend>
+					<halign>center</halign>
+					<padding>5</padding>
+					<binding>
+						<command>nasal</command>
+						<script>
+						acconfig.fbw_dlg.open();
+						</script>
+					</binding>
+				</button>
+				
+				<button>
+					<legend>System Failures</legend>
+					<halign>center</halign>
+					<padding>5</padding>
+					<binding>
+						<command>nasal</command>
+						<script>
+						acconfig.fail_dlg.open();
+						</script>
+					</binding>
+				</button>
+				
+			</group>
+			
+		</group>
+		
+	</group>
+	
+</PropertyList>

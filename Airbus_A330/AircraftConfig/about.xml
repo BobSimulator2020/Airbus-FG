@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2022 Josh Davidson (Octal450) -->
+
+<!-- A3XX Aircraft Config Dialog -->
+
+<PropertyList>
+
+	<name>aircraft-config-about</name>
+	<layout>vbox</layout>
+
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>About This Aircraft</label>
+        </text>
+        <button>
+            <halign>right</halign>
+            <pref-width>20</pref-width>
+            <pref-height>20</pref-height>
+            <legend>X</legend>
+            <key>Esc</key>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+	
+    <hrule/>
+	
+	<group>
+		<layout>vbox</layout>
+		
+		<text>
+			<halign>left</halign>
+			<label>Airbus A330 Series for FlightGear</label>
+		</text>
+		
+		<hrule/>
+		
+		<text>
+			<halign>left</halign>
+			<label>FDM: Josh Davidson (Octal450)</label>
+		</text>
+		<text>
+			<halign>left</halign>
+			<label>Systems: Josh Davidson (Octal450), Jonanthan Redpath (legoboyvdlp), J Maverick 16 merspieler, Matthew Maring (mattmaring)</label>
+		</text>
+		<text>
+			<halign>left</halign>
+			<label>Cockpit: Thorsten Herrmann (TH-555), Josh Davidson (Octal450), Jonanthan Redpath (legoboyvdlp), Andrea Vezzali (vezza)</label>
+		</text>
+		<text>
+			<halign>left</halign>
+			<label>Instruments: Josh Davidson (Octal450), Jonanthan Redpath (legoboyvdlp), merspieler, Matthew Maring (mattmaring)</label>
+		</text>
+		<text>
+			<halign>left</halign>
+			<label>Effects, Sounds, Textures, Misc: J Maverick 16, Andrea Vezzali (vezza), Matthew Maring (mattmaring)</label>
+		</text>
+		<text>
+			<halign>left</halign>
+			<label>Liveries: Chris M., Narendran Muraleedharan, Ahmet Erfkemper, Enrico Castaldi (Spectre), J Maverick 16, Gary Brown (thebroons), Baptiste Campion (Bat), others</label>
+		</text>
+		<text>
+			<halign>left</halign>
+			<label>Guide: First Officer Delta</label>
+		</text>
+		<text>
+			<halign>left</halign>
+			<label>Developed originally by former Immersive Design Group (IDG) under the name of IDG-A33X,</label>
+		</text>
+		<text>
+			<halign>left</halign>
+			<label>now rembranded and continued by Josh Davidson, J Maverick 16 and Jonathan Redpath.</label>
+		</text>
+	
+	</group>
+	
+	<hrule/>
+	
+	<group>
+		<layout>hbox</layout>
+		
+		<button>
+			<halign>center</halign>
+			<legend>Close This</legend>
+			<pref-width>210</pref-width>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+
+</PropertyList>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2020 Josh Davidson (Octal450) -->
+
+<!-- A3XX Aircraft Config Dialog -->
+
+<PropertyList>
+
+	<name>aircraft-config-rendering</name>
+	<layout>vbox</layout>
+	
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>Rendering Settings</label>
+		</text>
+		<button>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+	
+	<group>
+		<layout>vbox</layout>
+		
+		<text>
+			<halign>left</halign>
+			<label>Your rendering settings will not allow all graphical features of the aircraft to be visible!</label>
+		</text>
+		
+		<text>
+			<halign>left</halign>
+			<label>This means certain lighting effects will not be usable, including cockpit floodlights. </label>
+		</text>
+		
+		<text>
+			<halign>left</halign>
+			<label>For the best experience:</label>
+		</text>
+		
+		<text>
+			<halign>left</halign>
+			<label>* Atmospheric Light Scattering should be enabled</label>
+		</text>
+		
+		<text>
+			<halign>left</halign>
+			<label>* Landmass shader should be at least 4 for external lights to illuminate the ground</label>
+		</text>
+		
+		<text>
+			<halign>left</halign>
+			<label>* Model shader should be at least 2 for lighting to illuminate the aircraft model</label>
+		</text>
+		
+		<hrule/>
+		
+		<text>
+			<halign>left</halign>
+			<label>Would you like Aircraft Config to automatically set these minimum basic settings?</label>
+		</text>
+		
+		<text>
+			<halign>left</halign>
+			<label>To save these settings, make sure to quit FlightGear with File -&gt; Exit after your flight is complete.</label>
+		</text>
+	
+	</group>
+	
+	<hrule/>
+	
+	<group>
+		<layout>hbox</layout>
+	
+		<checkbox>
+			<label>Do not warn me about rendering settings again</label>
+			<halign>center</halign>
+			<property>/systems/acconfig/options/no-rendering-warn</property>
+			<binding>
+				<command>property-toggle</command>
+				<property>/systems/acconfig/options/no-rendering-warn</property>
+			</binding>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>
+				acconfig.writeSettings();
+				</script>
+			</binding>
+			<live>true</live>
+		</checkbox>
+		
+	</group>
+	
+	<hrule/>
+	
+	<group>
+		<layout>hbox</layout>
+		
+		<button>
+			<halign>center</halign>
+			<legend>Apply minimum settings</legend>
+			<pref-width>200</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>
+				acconfig.renderingSettings.fixAll();
+				</script>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+		
+		<button>
+			<halign>center</halign>
+			<legend>Advanced: View Shader Settings</legend>
+			<pref-width>200</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>
+				acconfig.renderingSettings.fixCore();
+				</script>
+			</binding>
+			<binding> <!-- Close the non-ALS shader dialog if it is open for some bizarre reason -->
+				<command>dialog-close</command>
+				<dialog-name>shaders</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-show</command>
+				<dialog-name>shaders-lightfield</dialog-name>
+			</binding>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+		
+		<button>
+			<halign>center</halign>
+			<legend>Ignore</legend>
+			<pref-width>150</pref-width>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	
+	</group>
+	
+</PropertyList>

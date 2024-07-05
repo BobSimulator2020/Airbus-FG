@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2020 Josh Davidson (Octal450) -->
+
+<!-- A3XX Aircraft Config Dialog -->
+
+<PropertyList>
+
+	<name>aircraft-config-fail</name>
+	<layout>vbox</layout>
+
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>System Failures</label>
+        </text>
+        <button>
+            <halign>right</halign>
+            <pref-width>20</pref-width>
+            <pref-height>20</pref-height>
+            <legend>X</legend>
+            <key>Esc</key>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+	
+    <hrule/>
+	
+	<text>
+		<halign>left</halign>
+		<label>Failed when Checked</label>
+	</text>
+	
+	<group>
+		<layout>hbox</layout>
+	
+		<group>
+			<layout>vbox</layout>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>FCTL SYS Fail</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>ELAC1</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/elac1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>ELAC2</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/elac2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>SEC1</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/sec1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>SEC2</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/sec2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>SEC3</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/sec3</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>FAC1</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/fac1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>FAC2</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/fac2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>RTLU1</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/rtlu-1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>RTLU2</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/rtlu-2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>THS</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/ths-jam</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Yaw Damper 1</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/yaw-damper-1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Yaw Damper 2</label>
+				<halign>left</halign>
+				<property>/systems/failures/fctl/yaw-damper-2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>PNEU SYS Fail</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Bleed ENG 1</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/bleed-1-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Bleed ENG 2</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/bleed-2-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>HP Valve ENG 1</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/hp-1-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>HP Valve ENG 2</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/hp-2-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Hot Air Valve</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/hot-air-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Ram Air Valve</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/ram-air-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Pack 1</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/pack-1-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Pack 2</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/pack-2-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>X Bleed</label>
+				<halign>left</halign>
+				<property>/systems/failures/pneumatics/x-bleed-valve</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		</group>
+		
+		<vrule/>
+		
+		<group>
+			<layout>vbox</layout>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>HYD SYS Fail</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Blue HYD Leak</label>
+				<halign>left</halign>
+				<property>/systems/failures/hydraulic/blue-leak</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Blue ELEC Pump</label>
+				<halign>left</halign>
+				<property>/systems/failures/hydraulic/blue-elec</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Green HYD Leak</label>
+				<halign>left</halign>
+				<property>/systems/failures/hydraulic/green-leak</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Green ENG 1 Pump</label>
+				<halign>left</halign>
+				<property>/systems/failures/hydraulic/green-edp</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Yellow HYD Leak</label>
+				<halign>left</halign>
+				<property>/systems/failures/hydraulic/yellow-leak</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Yellow ENG 2 Pump</label>
+				<halign>left</halign>
+				<property>/systems/failures/hydraulic/yellow-edp</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Yellow ELEC Pump</label>
+				<halign>left</halign>
+				<property>/systems/failures/hydraulic/yellow-elec</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>PTU</label>
+				<halign>left</halign>
+				<property>/systems/failures/hydraulic/ptu</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>ELEC SYS Fail</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>AC ESS Bus</label>
+				<halign>left</halign>
+				<property>/systems/failures/electrical/ac-ess-bus</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>APU GEN</label>
+				<halign>left</halign>
+				<property>/systems/failures/electrical/apu</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>DC ESS BUS</label>
+				<halign>left</halign>
+				<property>/systems/failures/electrical/dc-ess-bus</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>EMER GEN</label>
+				<halign>left</halign>
+				<property>/systems/failures/electrical/emer-gen</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>ENG 1 GEN</label>
+				<halign>left</halign>
+				<property>/systems/failures/electrical/gen-1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>ENG 2 GEN</label>
+				<halign>left</halign>
+				<property>/systems/failures/electrical/gen-2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+				
+		</group>
+		
+		<vrule/>
+		
+		<group>
+			<layout>vbox</layout>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>FUEL SYS Fail</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Tank L Pump 1</label>
+				<halign>left</halign>
+				<property>/systems/failures/fuel/left-tank-pump-1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Tank L Pump 2</label>
+				<halign>left</halign>
+				<property>/systems/failures/fuel/left-tank-pump-2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Tank C Pump 1</label>
+				<halign>left</halign>
+				<property>/systems/failures/fuel/center-tank-pump-1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Tank C Pump 2</label>
+				<halign>left</halign>
+				<property>/systems/failures/fuel/center-tank-pump-2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Tank R Pump 1</label>
+				<halign>left</halign>
+				<property>/systems/failures/fuel/right-tank-pump-1</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Tank R Pump 2</label>
+				<halign>left</halign>
+				<property>/systems/failures/fuel/right-tank-pump-2</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Fire</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>AFT CRG</label>
+				<halign>left</halign>
+				<property>/systems/failures/fire/cargo-aft-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>FWD CRG</label>
+				<halign>left</halign>
+				<property>/systems/failures/fire/cargo-fwd-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>LAV</label>
+				<halign>left</halign>
+				<property>/systems/failures/fire/lavatory-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Engine Fire</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Left Engine</label>
+				<halign>left</halign>
+				<property>/systems/failures/fire/engine-left-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>APU</label>
+				<halign>left</halign>
+				<property>/systems/failures/fire/apu-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Right Engine</label>
+				<halign>left</halign>
+				<property>/systems/failures/fire/engine-right-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		
+			<hrule/>
+			
+			<button>
+				<legend>Reset All</legend>
+				<halign>center</halign>
+				<padding>5</padding>
+				<pref-width>120</pref-width>
+				<binding>
+					<command>nasal</command>
+					<script>
+					acconfig.failReset();
+					</script>
+				</binding>
+			</button>
+		</group>
+	</group>
+	
+</PropertyList>
